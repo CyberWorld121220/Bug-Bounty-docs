@@ -1,0 +1,3 @@
+Bitmap,canvas,paint : https://twiserandom.com/android/graphics/what-is-a-bitmap-in-android/#:~:text=Everything%20that%20is%20drawn%20in,by%20using%20the%20BitmapFactory%20class
+Face : https://developer.android.com/reference/android/hardware/camera2/params/Face
+Builder classes : https://android.jlelse.eu/create-complex-object-at-run-time-with-builder-pattern-d425e6f4408e

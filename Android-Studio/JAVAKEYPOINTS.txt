@@ -1,0 +1,224 @@
+key points: 
+1) static method of any class can be called ,without making any objects from any ohter class ,while in case of public class an object should created.
+2) variables define in a class ,which can access by all methods of the class are called as class attributes and can be accessed by object.classattribute 
+3) A class must have a matching filename (Main and Main.java).
+4) A constructor in Java is a special method that is used to initialize objects. The constructor is called when an object of a class is created. It can be used to set initial values for object attributes:
+4) consutructor agar kuch parameters as a input leta hai mtlb inside paranthesis kuch le raha hai to haobject create krte time unn inputs ko new classname(YAHA PUT kRNA ZARURI HAI);
+5) in case of static: Attributes and methods belongs to the class, rather than an object
+6) If you don't want the ability to override(changing value of variabel in any method) existing attribute values, declare attributes as final:
+7)Abstract Classes and Methods
+Data abstraction is the process of hiding certain details and showing only essential information to the user.
+Abstraction can be achieved with either abstract classes or interfaces (which you will learn more about in the next chapter).
+
+The abstract keyword is a non-access modifier, used for classes and methods:
+
+Abstract class: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class).
+
+Abstract method: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
+An abstract class can have both abstract and regular methods:
+
+ 
+An abstract method belongs to an abstract class, and it does not have a body. The body is provided by the subclass:  abstract method ke kabhi objects nahi bante na hi inki koi body ya koi main function hota hai, inka bss ek hi purpose hota hai ,dusri classes innpar extends krre and inke attributes ko use krre and inpar extends honi class inki subclass ban jati hai ,agar koi abstract public void method();  isstarah se abstract class mein define hai ya yun kahe ek method call ki tarah define hai toh subclass mein uss method ki body banani padti hai ,publi void method(){ ....} ,iss tarah se yein subclass mein define krna hai.
+NOTE: agar abstract class mein koi abstract method define ki gayi hai toh usske upar extend krne vali class ko mein uss abstract method ka body jarur banana chyein warna no abstract class error generate hoga. 
+NOTE: abstract class mein kabhi bhi uska method ki body (mtlb {...} ) nahi banate.
+NOTE: agar abstract class mein koi normal method hai like public void method(){} toh iss method ko abstract class ke child classes ke object.method() ke throgh run kara sakte hai
+Interfaces
+Another way to achieve abstraction in Java, is with interfaces.
+
+An interface is a completely "abstract class" that is used to group related methods with empty bodies:
+
+Example
+// interface
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void run(); // interface method (does not have a body)
+}
+// interface method (does not have a body)
+To access the interface methods, the interface must be "implemented" (kinda like inherited) by another class with the implements keyword (instead of extends). The body of the interface method is provided by the "implement" class:
+
+Notes on Interfaces:
+Like abstract classes, interfaces cannot be used to create objects (in the example above, it is not possible to create an "Animal" object in the MyMainClass)
+Interface methods do not have a body - the body is provided by the "implement" class
+On implementation of an interface, you must override all of its methods
+Interface methods are by default abstract and public
+Interface attributes are by default public, static and final
+An interface cannot contain a constructor (as it cannot be used to create objects)
+
+ABSTRACT classes ke attributes use krne ke liye other classes ussmien extend hoti hai jabki interface classes ke attrbutes use krne ke usse implements krti hai
+Why And When To Use Interfaces?
+1) To achieve security - hide certain details and only show the important details of an object (interface).
+
+2) Java does not support "multiple inheritance" (a class can only inherit from one superclass). However, it can be achieved with interfaces, because the class can implement multiple interfaces. Note: To implement multiple interfaces, separate them with a comma (see example below).
+8)
+The meaning of Encapsulation, is to make sure that "sensitive" data is hidden from users. To achieve this, you must:
+
+declare class variables/attributes as private
+provide public get and set methods to access and update the value of a private variable
+[jo vairable kisi class mein private modifier ki tarah declare hote hai (private int x =0), unhe hum just object banakar object.x = newvalue krke update nahi kr skte error aa jayega , isske liye hum ussi vairable ki class mein public void setnewx(int new){ this.x = new}  method define krte hai this batata hai ki yein iss class ke variable ki baat ho rahi hai,similarly hum private variable ki value find krne ke liye public String getName() {
+    return name;
+  }   method ka use krte hai, bss object crete karo and stringvairable = object.getName();]  The this keyword is used to refer to the current object.
+
+However, as the name variable is declared as private, we cannot access it from outside this class:
+
+Why Encapsulation?
+Better control of class attributes and methods
+Class attributes can be made read-only (if you only use the get method), or write-only (if you only use the set method)
+Flexible: the programmer can change one part of the code without affecting other parts
+Increased security of data
+jaise python mein input ,c mein scanf vaise hi java mei scanner class hoti hai.
+9)Inheritance: 
+In Java, it is possible to inherit attributes and methods from one class to another. We group the "inheritance concept" into two categories:
+
+subclass (child) - the class that inherits from another class
+superclass (parent) - the class being inherited from
+To inherit from a class, use the extends keyword.
+
+
+Polypherism: (most imp is example): yaha hum object parent class ka banatein hai lekin object ke liye subclasses mein define methods ko pehle priority di jati hai:
+  
+  example without polypherism:
+  class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig  {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();
+    Pig myPig = new Pig();
+    Dog myDog = new Dog();
+        
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+}
+
+OUUTPUT: 
+The animal makes a sound
+The pig says: wee wee
+The dog says: bow wow
+
+EXAMPLE with polypherism: 
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();
+    Animal myPig = new Pig();          // here Pig(); is subclass on which Animal is extended and we will use methods of this subclass.
+    Animal myDog = new Dog();
+        
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+}
+
+OUTPUT: 
+The animal makes a sound
+The pig says: wee wee
+The dog says: bow wow
+
+
+dono mein hi same output aaya hai;
+Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+
+Like we specified in the previous chapter; Inheritance lets us inherit attributes and methods from another class. Polymorphism uses those methods to perform different tasks. This allows us to perform a single action in different ways.
+
+For example, think of a superclass called Animal that has a method called animalSound(). Subclasses of Animals could be Pigs, Cats, Dogs, Birds - And they also have their own implementation of an animal sound (the pig oinks, and the cat meows, etc.):
+
+JAVA inner class: 
+In Java, it is also possible to nest classes (a class within a class). The purpose of nested classes is to group classes that belong together, which makes your code more readable and maintainable.
+
+To access the inner class, create an object of the outer class, and then create an object of the inner class:
+example:
+class OuterClass {
+  int x = 10;
+
+  class InnerClass {
+    int y = 5;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    OuterClass myOuter = new OuterClass();
+    OuterClass.InnerClass myInner = myOuter.new InnerClass();
+    System.out.println(myInner.y + myOuter.x);
+  }
+}
+
+// Outputs 15 (5 + 10)
+
+Private Inner Class
+Unlike a "regular" class, an inner class can be private or protected. If you don't want outside objects to access the inner class, declare the class as private:
+
+NOTE: remember if a inner class in not static then for accessing it an object of outer class must be created:
+     OuterClass outerclass = new OuterClass();
+     OuterClass.InnerClass = outerclass.new OuterClass.InnerClass();
+     yaha par outerclass.new mein outerclass is object of OuterClass.
+     
+     
+     but if inner class is static then we can simply access inner class by :
+     OuterClass.InnerClass = new OuterClass.InnerClass(); // yaha new simple tarah se likha jata hai
+Java Type Casting
+Type casting is when you assign a value of one primitive data type to another type.
+
+In Java, there are two types of casting:
+
+Widening Casting (automatically) - converting a smaller type to a larger type size
+byte -> short -> char -> int -> long -> float -> double
+
+Narrowing Casting (manually) - converting a larger type to a smaller size type
+double -> float -> long -> int -> char -> short -> byte
+
+java string formmator: system.out.printf
+public class Solution {
+
+public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("================================");
+        for(int i=0;i<3;i++)
+        {
+            String s1=sc.next();
+            int x=sc.nextInt();
+            System.out.printf("%-15s%03d%n", s1, x);
+        }
+        System.out.println("================================");
+
+}
+}
+("%-15s%03d%n", s1, x) % : used as a formatter. '-' : minus sign used for left indentation of the string. 15s : here 15 denotes the string's minimum field width 15. '0' : pads the extra 0s in the integer. 3d : here 3 denotes integer's minimum field width 3. %n : prints the new line.
+
+Hope, this helps!
+
+
