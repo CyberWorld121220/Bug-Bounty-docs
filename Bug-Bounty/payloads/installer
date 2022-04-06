@@ -1,0 +1,4 @@
+#!/bin/bash
+# installer file
+sudo chmod a+rwx pypay
+

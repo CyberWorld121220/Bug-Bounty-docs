@@ -1,0 +1,6 @@
+<methodCall>
+<methodName>pingback.ping</methodName>
+<params>
+<param><value><string>YOUR_SERVER_LINK</string></value>
+</param><param><value><string>http://sar.gov.ua/wp-json/wp/v2/users</string></value></param></params>
+</methodCall>

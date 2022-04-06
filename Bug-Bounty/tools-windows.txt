@@ -1,0 +1,21 @@
+Windows tools:
+
+===========>>>>>>>>>>> pwdump7.exe 
+     this is used to dump the password hases from the system, we need to put this tool in the target, and run by simple : pwdump7.exe 
+       : pwdump7.exe > C:\hashes.txt
+===========>>>>>>>>>>> ophcrack.exe 
+     this is used to crack the hashses from file saved by pwdump7.exe , after loding hash file if it ask for table selection, select vista 
+===========>>>>>>>>>>> winrtgen 
+     this is used to create a rainbow table , [password:hash]
+     we can select type of hash, we can select password length , charset (char use to create password) [ but in exam 
+     they are not going to ask to create new table, because it will take hours, so they will provide us 
+
+===========>>>>>>>>>  rcrack_gui.exe
+    this is used to crack the hash from pwdump hash file, using rainbow table, we just need to load the rainbow file and hash file 
+    
++++++++++++++++++ how to run script .ps1 in windows powershell 
+                  Unblock-File .\install.ps1
+                  Set-ExecutionPolicy Unrestricted
+                  .\install.ps1
+
+============>>>>>>>>>>>>>> wget of powershell : Invoke-WebRequest http://www.google.com/ -OutFile c:\google.html

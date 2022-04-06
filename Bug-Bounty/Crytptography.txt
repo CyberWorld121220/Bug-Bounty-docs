@@ -1,0 +1,4 @@
+Cryptographic algo with example:
+
+base64: VGhpcyBpcyBzb21lIHRleHQgdG8gY29udmVydCB2aWEgQ3J5cHQu   // remeber it is not an hash algorithm , so size of basse64 string is directly proptional to the lenght of the data
+base58: ZzXJRHC6cq56uXZCATPbt6LE1dsVF3i3BXzFa7191sQmozhhSwSg9EUZt8Xj  // remeber it is not an hash algorithm , so size of basse58 string is directly proptional to the lenght of the data

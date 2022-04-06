@@ -1,0 +1,12 @@
+Solidity and smart contract hacking => 
+learning links => https://blog.sigmaprime.io/solidity-security.html
+https://hacken.io/education/how-to-smart-contracts-bug-hunting/
+
+****payable function*************
+function () payable {
+// this code will execute every time when any transaction is made to this contract ( from transcation meaning is every message send to this contract)
+}
+
+********** available methods to transfer ether ********************
+ .send(aount to send) , .call.value(amount to send) , .transfer(amount to send)  , 
+  among the three methods send and call will does not care that the fund transfer happens successfully or not , they will just return true , false value if , developer did'nt check their value then its vulnerability , while transfer will stop the contract if run if transfer get fail to reinit the process

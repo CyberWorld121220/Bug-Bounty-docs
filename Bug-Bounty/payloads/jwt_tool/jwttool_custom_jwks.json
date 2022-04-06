@@ -1,0 +1,11 @@
+{
+    "keys":[
+        {
+            "kty":"RSA",
+            "kid":"jwt_tool",
+            "use":"sig",
+            "e":"AQAB",
+            "n":"q2PltcEKItWwwsXIn_4C6RLC2pOOfdPMOlBnv1-xuIefgOW9rvQl03B8MFell2pv0V2EWawCUYBPYXs4a4kiY4KKB-OeIU3P1E2pSdyvA870_eJ31pUne_qmP1jJNtaa0et_tHr7E7dJwsis8DRPHduIY029Bop6qGhtAcj7VYkYC_kGmPrB8_2L-lrqIbh_smJvBq6_6Bjn-8mK4Xlsm94OvgLAn-gLm1XilJJVv0RBvovg_E5PQM6shHfb3w608lemnQgokVYURVjP0gSa_wziMk30bmSvVZf50rTKSuodHYOVMk_C7dWkrb4BUUHpWuxBDtS0Yki8v9kj9fyHsw"
+        }
+    ]
+}

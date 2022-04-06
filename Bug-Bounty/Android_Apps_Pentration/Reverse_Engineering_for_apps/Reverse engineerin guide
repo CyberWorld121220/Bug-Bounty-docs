@@ -1,0 +1,14 @@
+1) getting java files using d2j-dex2jar tool:
+./d2j-dex2jar.sh -f ~/Downloads/InsecureBankv2.apk
+2) getting res and smali files using apktool
+java -jar apktool.jar d ~/Downloads/InsecureBankv2.apk
+3) after making chages recompiling the folder to apk
+java -jar apktool.jar b InsecureBankv2 -o InsecureBankv2h.apk 
+(new apk will save with the name InsecureBankv2h.apk )
+4)generating keystore for app:
+keytool -genkey -v -keystore test.keystore -alias Test -keyalg RSA -keysize
+ 1024 -sigalg SHA1withRSA -validity 10000
+5) linking keystore with the app:
+jarsigner -keystore test.keystore InsecureBankv2h.apk -sigalg SHA1withRSA
+ -digestalg SHA1 Test
+Now the app is ready to install.....

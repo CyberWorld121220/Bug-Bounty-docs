@@ -1,0 +1,47 @@
+Graphql =  > basic introspection query => 
+query Introspection {
+  __schema {
+    types {
+      name
+    }
+  }
+}
+
+Finding availabe queries => 
+{
+  __schema {
+    queryType {
+      name
+    }
+  }
+}
+
+To extract userinfo or description => 
+query  {
+  user {
+    
+      edges{
+        node: node {
+          
+         username
+          id
+          bugs {
+            edges{
+              node: node {
+                text
+              }
+            }
+          }
+          
+        }
+      }
+    }
+    }
+ 
+ 
+ if we have a username => 
+ {
+  findUser(username: "admin"){
+    id
+  }
+}

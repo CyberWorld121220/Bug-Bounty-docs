@@ -1,0 +1,9 @@
+good habit to start with the following in any linux shell script
+#!/bin/bash
+set -e
+set -x
+TERM=linux
+
+disk partition commands: https://www.networkworld.com/article/3221415/linux-commands-for-managing-partitioning-troubleshooting.html
+
+how to switch from one version to another version of ruby : https://www.ruby-lang.org/en/documentation/installation/

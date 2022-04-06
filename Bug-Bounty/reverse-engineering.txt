@@ -1,0 +1,16 @@
+********* Reverse engineering techniques *******************************
+ -> file file_name
+ -> hexdump -C file_name | head -n 15
+ 
+ ## Binwalk is a tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images. Binwalk uses the libmagic library, so it is compatible with magic signatures created for the Unix file utility.
+
+ -> binwalk file_name
+ 
+ ## checking for encryption with binwalk
+ 
+ -> binwalk -E file_name 
+ if graph is little bit down then their is an encryption
+ 
+ *but if graph is highly down then there is no encryption , in that case run below command to extract files 
+ 
+ -> binwalk -e file_name 
