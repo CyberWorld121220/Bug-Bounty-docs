@@ -1,0 +1,14 @@
+
+DEFINATION:
+Debugging is the process of identifying, analyzing, and removing bugs in a system. We sometimes use troubleshooting and debugging interchangeably. But generally, we say troubleshooting when we're fixing problems in the system running the application, and debugging when we're fixing the bugs in the actual code of the application. 
+STRACE(Ek eaisa tool jo yein batayega ke given program hamarein system se kya kya krwa raha hai....):
+  There are a bunch of tools that can help us better understand what's going on with the system and with our applications. With the help of these tools, we can extend our knowledge of a particular problem view the actions of the program from a different point of view and get the info we need. Among these tools as trace lets us look more deeply at what the program is doing. It will trace a system calls made by the program and tell us what the result of each of these calls was. So to figure out what's up with our program that's failing to open will s trace the failing application.
+     how to use strace:
+     1) command: strace command_use_to_execute_program
+           ex: strace ./first.py
+           note: strace first.py will not work
+     2) for storing the output in the file Use:
+                  strace -o filename.strace command_use_to_execute_program
+                  how to open file: less filename.strace 
+                  press enter
+                  it will show less description for full description press shift+G

@@ -1,0 +1,10 @@
+difference between hubs and swithces:
+dono hardware device hote hai , kisi bhi network mein saare computers inse 
+connect hote hai,
+1) hub ke case mein agar bhut saare computers ek time par request bheje toh 
+waha requests ka colloision ho jata in wires, isse data collision bhi kehte, 
+because hub jo hota hai woh physical layer par based hota hai,,mtlb koi 
+protocol use nahi krta har wire har disha mein request jati hai.
+2)switch ke case mein data collsion nahi hota because,yein data link layer par
+based hota hai mtlb ethernet protocol follow krta hai,mtlb mac address leker 
+chalega and jsse bhejna hai usse hi bhejega.

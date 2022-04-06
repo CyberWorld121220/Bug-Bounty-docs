@@ -1,0 +1,8 @@
+routers jo hote hai woh third layer (mtlb network layer par based hote hai),hub
+and switches jo hote hai LAN ke computers ko aapas mein connect krte hai jabki
+routers public hote hai and koi bhi connect ho sakta hai data ke liye request
+bhej sakta hai,and yein IP protocol uss krte hai client ko identify krne ke 
+liye, even WAN mein saarein ke Sarrein routers ek dusre se connect hote hai
+and all over the world Data transmit krte hai.
+Routers share data with each other via Border Gateway Potocol(BGP),which lets
+them learn about the most optimal paths to forward traffic.

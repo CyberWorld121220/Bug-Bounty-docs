@@ -1,0 +1,18 @@
+Assembly languge basics :
+
+                int 21h => to execute above statements
+                
+                EAX,EBX,ECX,EDX => all are of 32 bits only
+                EAX = AX(16bits) + AH(8bits) + AL(8bits)
+                
+                MOV dl,50        # here 50 is in  decimal , means if we print the value of dl register , then it will print 2 on screen ( because in ascii table char value of 50 is 2)
+                
+                
+                mov ah, 2h   ; code for print char
+                int 21h      ; print value of "dl"
+                
+                mov var1, var2   ; is wrong 
+                mov bx , var2
+                mov var1 , bx ; is correct
+                
+What is Buffer : buffer is an area of memory set aside to hold temporarly, while it is being transfering from one var to other or from one program to other

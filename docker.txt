@@ -1,0 +1,29 @@
+# docker commands 
+
+docker ps   => it will list all current running docker process 
+docker ps --all => it will list all currently running and exited processes
+docker images => it will list out all available images
+docker run image_name => it will run image_name if it is locally present, other wise it will download and then run
+docker create image_name => it will create the container and give you container id
+docker start -a container_id => it will start or run the container attached to given container id [Note: container must be created already]
+
+          docker run image = docker create image + docker start container_id_of_container_created_from_image
+          
+docker logs container_id         => it will print entire logs/history of container whatever is happening or happened in the container
+
+docker stop container_id => to stop the container
+docker kill container_id => to kill the container or to stop it
+
+
+################################ Building Docker filie #########################################
+
+suppose we have the Dockerfile in current directory => 
+   to build docker container from it =
+                 docker build . => it will build the container and give the id/name =>
+                   to run docker run id  => it will the container
+                   
+                   
+                   ##### tagging the images 
+                   docker build -t blackbox/reddis:v1.1.0 .
+                   
+                    to run the container => docker run blackbox/reddis

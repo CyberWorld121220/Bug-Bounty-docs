@@ -1,0 +1,252 @@
+to know : 
+                    if you put 0x41 in ipython3 it will print A
+                    
+                    to get cyclic string : pwn cyclic 40  
+                    
+                    to get address of libc.so file in local computer => ldd any_binary_file_name_during_ctf_put_the_name_of_given_binary
+                    
+                    "0x0000000000400793" yein ek hex string hai, python mein print krane pr => 0x0000000000400793 aayega
+                    
+                                     but 0x0000000000400793 yein ek hexadecimal integer hai, python mein print krane pr => 4196243 dega , and functions mein bhi 4196243 yahi use krega
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cryptography :
+      with python : use google collab
+      
+      ord('a') -> will print 97
+      chr(97)  -> will print a
+      
+      from codecs import *
+           encode(b'hello','hex') -> print hex
+           
+       Single byte XOR : 
+          if P is plaintext , C is Ciphertext of plaintext , and K is the key used to convert P to C then:
+            
+               P ^ C = K
+               K ^ C = P
+               P ^ K = C
+               K ^ K = 0
+               
+               from above concept -> we can find P for below C ( hex string ) and we don't have K so we can brute force for K value :
+                  
+                  
+                  def bytexor(data, key):
+                          return bytes([i^j for i,j in zip(data,cycle(key))])
+                  message = decode(C,'hex')
+                  print(message) # print this ->  b'\x13\x14\x19\x0e\x1c\x10\x01\x02J\x08%\x19N\x14]\x0e%\x18I%\x1fN\t\x13\x16\x03%\x18\x08J\x11I\x14\x07'
+                  #print(bytexor(message,'z'.encode()))
+                  for i in range(256):
+                      key = chr(i).encode()
+                      if 'inctf' in str(bytexor(message,key)):
+                        print(bytexor(message,key))
+                      print(key) # it will print b'z' or b'a' or b'c' or ....... many else
+                      print(chr(i))
+       For installing pycryptodome : pip install pycryptodome
+              it is a python module contains function for AES and RSA encryption
+              
+       Modular arithmetic:
+           (A+B)modC = (AmodC + BmodC)modC
+           (A-B)modC = (AmodC - BmodC)modC
+           (A*B)modC = ((AmodC)*(BmodC))modC
+           A**b modC = (AmodC)**b modC        
+           
+       Modular inverse:
+           if A = BmodC
+           and gcd(A,C) = 1
+           then:
+             modular inverse of AmodC will be A^-1
+             (A*A^-1) = 1(modC)
+             
+### RSA encryption 
+ suppose there is message ( m ) = "this is secret" , and we need to encrypt it asymmetrically, so its integrity can be maintained
+ 1) first part is generation of private ( d ) which is used for decryption and public key ( e ) which is used for encryption, 
+ for that we choose any two random prime numbers p,q [ larger the number , stronger will be the encryption ]
+ then their is one more parameter n = p*q
+ and one nother parameter phin = (p-1)*(q-1)
+ 
+    now here some conditions must follow , we need to choose e (public key )such as it belongs to 1 to phin range, and also GCD(e,phin) = 1
+    and as we choose e , our d will be => d = e^-1 mod phin  : in python d = inverse(e,phin)
+    
+    
+    ## now we have e and d both so lets encrypt the message m :
+       in python => 1) first convert message from bytes to long ( integer ) =>  message_to_encrypt = bytes_to_long(m)
+                    2) then encrypting it with e => encrypted_message = pow(message_to_encrypt,e,n) 
+                        here encrypted_message is long , we can convert it to bytes or hex 
+                        encrypted = hex(long_to_bytes(encrypted_message))
+                    
+    ## in the same way to decrypt the message 
+       in python => 1) ciphertext = bytes_to_long(encrypted.decode("hex"))
+                       message = pow(ciphertext,d,n)
+                       print(long_to_bytes(message))
+                       
+   Note : suppose in any ctf , RSA comes with public key like ssh key , then use RSACtfTool for this CTF
+   always import : 
+     from Crypto.Util.number import *
+     
+  To Remember in RSA :
+       d = inverse(e,phin)
+       (m**e) mod n = c  => m**e = tn + c ## where t is random integer
+                            m = gmpy2.iroot(tn+c,e)
+                            
+         to calculate square root of n :
+                      from sympy import sqrt
+                      ans = sqrt(n)
+                            
+      whenever you hear unpadded RSA : unpadded RSA is homomorphic( search on wikipedia ), which means that:
+        encrypt(m1) * encrypt(m2) = ((m1**e) * (m2**e)) mod n = (m1 * m2)**e mod n = encrypt(m1 * m2)
+        
+        ********************* Formulas 
+       p,q, n, d,e ,m,phi and c => this all are whole numbers , they can not be fraction
+        
+        n = p * q
+        
+        phi = (p-1)*(q-1)
+        
+        1 < e < phi && gcd(e,phi) = 1 => which means e and phi must not have any common factor, apart 1.
+        
+        c = m**e mod n 
+        
+        m = c**d mod n
+        
+        d = (1 + k*phi)/e  => for a particular integer value of k for which d is whole number
+        
+         
+        
+        
+        ***********General rules in rsa
+        
+        C = M**e mod n => C = M**e % n => for some integer t : M = root of e (C + N*t)
+        M = C**d mod n
+        phi = (p-1)(q-1)
+        
+        e*d = 1 ( mod phi ) => e*d is equal to 1 over mod phi which means => e*d mod phi = 1 => e*d % phi = 1 => we can say d is moudlo inverse of e over mod phi OR e is moudlo inverse
+        of d over mod phi
+        =>
+        d = inverse(e,phi) and e = inverse(d,phi)
+        
+        ****************************************************** Calculating p and q *************************************************************************************
+        say you have n , then 
+        
+        n = 3348439048.................
+        import primefac
+        
+        p,q = primefac.factorint(n).keys()   ## this will give p and q , by factorizing n , say we mathematically program is unable to factorize, then it will fetch the result from factordb.com , means we will have answer at last
+        
+        
+        
+        
+        
+        
+        ****************************** Say in any RSA challenge they give dp and dq , then we need to remember that***************************************************
+        
+                                       dp != d*p , acutally dp = d mod p-1  and dq = d mod q-1 ,  => dp = d % (p-1) and dq = d % (q-1)
+                                       
+                                       for this type of challanges , we need to use chiense reminder theorem
+                                       
+                                       step 1) calcuate qinv, which is basically 
+                                                    qinv = q**-1  (mod p) => (qinv * q )% p = 1
+                                                    so in python : qinv = inverse(q,p)
+                                      step 2) calculating m1 and m2 :
+                                                    m1 = (C**dp) mod p and m2 = (c**dq) mod q
+                                                    
+                                                    so in python 
+                                                    m1 = pow(c,dp,p)
+                                                    m2 = pow(c,dq,q)
+                                     step 3) hinv = qinv * (m1 - m2)
+                                             
+                                             m = m2 + h*q
+                                       
+        
+############################################# Ceaser Cipher Automation ###########################################################
+             $ for i in {1..100}; do echo "vapgs{uryyb_guvf_vf_synt}" | caesar $i;done
+
+
+############################################# Viegener cipher is inspired from ceaser cipher , here we rotate the message char with the repect to the index of corresponding key char######
+
+             Script is already prepared for encryption and decryption of viegener cipher
+             
+             say you have 
+             encrypted_flag , key  {not necessary ther are of same length }
+             go to ExtraStuff1/Notes/CTF/
+             
+             then to decrypt
+             $ python3 vigenere-en-de.py -c encrypted_flag -k key -t 1
+             it will print the flag
+             
+             now say we have message to encrypt with key
+             $ python3 vigenere-en-de.py -c message -k key -t 0 
+             
+             *****************Sometimes in viegener cipher , key is not given , for that type of questions , use below website:
+             
+                https://www.guballa.de/vigenere-solver
+             
+ ############################################################# Mathematics with python ############################################################################################
+ 
+                           say we want to calculate Nth root of Y , then we we can do that by using gmpy2 , for that => Nth root of Y = gmpy2.iroot(Y,N)
+                           
+                           say x = (y**z) mod k  then we can calculate x using pow function:
+                              in python : x = pow(y,z,k)
+                              
+                           say x = (y**-1) mod z , then we can calulate x using modular inverse function of crypto.Util.number
+                           
+                             x = inverse(y,z)
+                           
+                           
+                           ******** say we have b'hextotext' and we need to convert this to string , for this
+                           => b'hextotext'.decode('utf-8') => 'hextotext' , and also 
+                              'hextotext'.encode('utf-8') => b'hextotext' 
+                              
+                             ******* also to convert hex [ its data type is str] , to bytes => bytes.fromhex(hexstring)
+                              
+                             ******* and to convert ascii string to hex string => from binascii import unhexlify ; hex_val = binascii.hexlify(str_val).decode('utf-8')
+                                  without decode it will return byte stirng
+                                  
+                                  
+                                  
+ ########################################################## Mathematics which must be remember ##########################################################################################
+           methods to find gcd of two numbers manually , at last zero always comes and its preceding number is GCD
+                     A - B = C
+                     B - C = D
+                     C - D = E
+                     D - E = E
+                     E - E = 0
+                     
+                     here => gcd(A,B) = gcd(B,C) = gcd(C,D) = gcd(D,E) = E
+                     
+                    also 
+                    A % B = C
+                    B % C = D
+                    C % D = E
+                    D % E = E
+                    E % E = 0
+                    here => gcd(A,B) = gcd(B,C) = gcd(C,D) = gcd(D,E) = E
+                    
+           some gcd properties =>
+           ax + by = gcd(a,b)
+           gcd(a,b) = gcd(a,a%b)                                                   
+           gcd(a,a%b) = bx1 + (a%b)y1
+           
+           ****************** a%b = a - (a//b)*b **************************
+  
+  #################################################################### Properties of mod ###############################################################################################
+  
+  ->                    (a mod n) mod n = a mod n
+  ->                    n*x mod n = 0 for all positive integer values of x
+  ->                    if p is a prime number which is not a divisor of b, then ab*(p-1) mod p = a mod p, due to Fermat's little theorem.
+  ->                    (a + b) mod n = [(a mod n) + (b mod n)] mod n
+  ->                    ab mod n = [(a mod n)(b mod n)] mod n
+  ->                    a/b mod n = [(a mod n)(b*-1 mod n)] mod n
+  ->                    [(ab mod n)(b*-1 mod n)] mod n = a mod n

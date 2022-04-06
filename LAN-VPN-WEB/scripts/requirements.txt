@@ -1,0 +1,4 @@
+scapy==2.4.4
+pyfiglet==0.8.post1
+prettytable==0.7.2
+requests==2.25.1

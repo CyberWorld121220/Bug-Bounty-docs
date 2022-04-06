@@ -1,0 +1,15 @@
+how to install ethminer=> https://www.perfacilis.com/blog/crypto-currency/mining-ethereum-on-ubuntu-with-ethminer.html
+
+
+
+sudo apt-get install software-properties-common
+add-apt-repository ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum geth
+sudo apt-get install opencl-amdgpu-pro-icd cmake git mesa-common-dev
+git clone https://github.com/ethereum-mining/ethminer.git
+cd ethminer
+git submodule update --init --recursive
+mkdir build; cd build
+cmake .. -DETHASHCUDA=ON -DETHASHCL=OFF
+

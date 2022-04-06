@@ -1,0 +1,6 @@
+how to create projects with node js 
+1) creating the main directory for the project 
+2) go in that directory ,clean it 
+3) command : npm init 
+   fill all required details so it will create the required project.
+4) npm install express --save

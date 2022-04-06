@@ -1,0 +1,17 @@
+vim commands =>
+
+     to open a file => vim file.txt
+     to write / insert=>       i
+     to replace every "viraj" with "tanisha" in the file => :%s/viraj/tanisha/g
+     search "viraj" from top to bottom in file => :/viraj
+     search "viraj" from bottom to top in file => :?viraj
+     deleting the current line => bring the cursor to that line => ESC => dd
+     deleting a range of lines => :3,5d
+     deleting line containing pattern "viraj" => :g/viraj/d
+     deleting line not containing pattern "viraj" => :g!/viraj/d
+     deleting all the lines starting with "viraj" => :g/^viraj/d
+     to delete next n lines => ndd
+     
+     . => current line
+     $ => last line
+     % => All lines

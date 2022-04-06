@@ -1,0 +1,28 @@
+git init
+git add <folder1> <folder2> <etc.>
+git commit -m "Your message about the commit"
+git remote add origin https://github.com/yourUsername/yourRepository.git
+git push -u origin master
+git push origin master
+
+
+
+// deploying nodejs app of heroku:
+
+heroku -v
+heroku login                   // do this in node app directory , if browser failed to open then copy the link and open it in the browser manually
+
+heroku create name-of-app-which-will-be-the-subdomain-of-link     // give name with small letters only
+
+and this is the step which you may have to do => heroku git:remote -a project-name
+
+git push heroku master                           // app is deployed now..
+
+suppose you made any change , then after making changes , you can see changes you made by git status
+so now 
+git add -A                 // for  updating repositry
+git commit -m "commit message"          // to commit
+and for updating the website     git push heroku master
+
+
+// if any problem occur then create app on heroku dashboard first then , do follow the steps mention on heroku dashboard

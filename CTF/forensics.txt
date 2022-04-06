@@ -1,0 +1,57 @@
+Commands for Forensics :
+
+to extract hidden files inside of any type of file:
+
+           binwalk -e file_name
+to crack password for zip file : via brute force
+zip2john hash
+john hash --wordlist=file.txt
+john --show zipfilehash
+8702.zip/To_agentR.txt:alien:To_agentR.txt:8702.zip:8702.zip
+
+after decoding message for zip text file : Area51
+
+and when you give this password in steghide for cute-alien.jpg , you will have an message.txt
+grep user name and ssh password for it
+
+for priv escalation: 
+cve-2019-14278 is used 
+
+exploitation is quit simple just give following command to get root:
+sudo -u#-1 /bin/bash
+
+
+
+## Volatility 2
+
+    Wiki page , available plugins : https://github.com/volatilityfoundation/volatility/wiki/Command-Reference
+    
+    Also check cheat sheet pdf in voltility folder 
+
+
+    basic commands: python2 vol.py -f file_name imageinfo    ## print profile, and image info
+                                   -f file_name --profile=PROFILE_NAME pslist       ## list process list
+                                   -f file_name --profile=PROFILE_NAME netscan      ## network connections , some other plugins are also available like: connscan , sockets
+                                   -f file_name --profile=PROFILE_NAME psxview      ## print the hidden processes , if you see first two coloums ( pslist ans psscan ) value False, for any process then that process is trying to hide itself
+                                   -f file_name --profile=PROFILE_NAME consoles ## which extracts command history by scanning for _CONSOLE_INFORMATION
+                                   -f file_name --profile=PROFILE_NAME cmdscan  ## which extracts command history by scanning for _COMMAND_HISTORY
+                                   -f file_name --profile=PROFILE_NAME cmdline  ## the cmdline plugin which display process command-line arguments did give us interesting information
+                                   -f file_name --profile=PROFILE_NAME procdump -p 1640 --dump-dir . ##  to take the dump of process by PID and we will get .dump , which we can analysis using strings
+                                   
+                                   
+                 someother plugins : 
+                                     clipboard -> to get data of clibboard
+                                     malfind   -> to find revershell shell type programs or applications , it will print name and hex code
+                                     iehistory -> print the request/response from internet reqeusts made by programs or browser
+                                     memdump -> procdump is used to dump the program running the process, but memdump dump the memory / data present in the program at the time dump , means if we procdump notepad.exe using procdump, it will download notepad.exe and while memdump will give the data and files on the notepad at time of dump
+                                     vadinfo -> when we have virtual address , where the program start and end 
+                                     vadtree -> print all vad tree
+                                     
+                 plugins which print time of file last modified ,last access , and file creation or print time of file in any aspect :
+                                     shimcache , mftparser , pstree
+                                     
+ ######################################################## Wireshark cool filters #########################################################################################
+ 
+       -> to check the http packet which contains, string "password" => http contains "password"
+                                                                     => tcp contains "password"
+                                                                     => udp contains "password"

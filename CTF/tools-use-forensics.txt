@@ -1,0 +1,13 @@
+tools for forensics:
+binwalk:
+    biwalk -e file_name  # to extract hidden files
+steghide:
+   steghide extract -sf file_name # to extract hidden file with password
+hexedit:
+   use to fix magic numbers / headers of files
+   
+stegsolve :
+  use to see an image with different color format
+  
+Audacity :
+  use to draw spectrum of an audio file

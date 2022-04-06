@@ -1,0 +1,5 @@
+nmap guide:
+nmap ip   : normal scan
+nmap -A ip   : intense scan
+nmap -sT ip   : scan and intializing the connection
+nmap -sS ip    : scan even with the firewall security

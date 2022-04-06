@@ -1,0 +1,298 @@
+<!-- index.html file -->
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
+
+<title>Viraj Vaishnav</title>
+<meta name="description" content="Add small description of yourslef.">
+  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
+  <meta name="keywords" content="Put your name, skills and some coding keywords" />
+  <link rel="stylesheet" href="index.css" />
+  </head>
+<body>
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation">
+        <ul class="nav__items">
+        <li class="nav__item"><a href="#cert" class="nav__link">Cloud Plateform</a></li>
+        <li class="nav__item"><a href="#projects" class="nav__link">Azure</a></li>
+          
+          <li class="nav__item"><a href="#work" class="nav__link">Security tasks</a></li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">Automation with clouds</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
+          
+        </ul>
+      </nav>
+    </div>
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 class="heading-primary">
+          <!-- Replace the following name with your name -->
+          <span>Viraj Vaishnav</span>
+        </h1>
+        <!-- Put a small paragraph about yourself -->
+        <p>CSE'23 NIT Meghalaya</p>
+        <p>Cyber Security Enthuasiast and Android Developer</p>
+        <p>Indore , Madhya Pradesh</p>
+        <p>India</p>
+        <a href="#contact" class="btn btn--pink">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+<!-- ***** Certifications ***** -->
+
+    <section class="work" id="cert">
+      <div class="row">
+        <h2>Certifications</h2>
+        <div class="work__boxes">
+
+          <!-- Each div with the work__box class is a project. -->
+          <!-- ********************************************EJPT************************************************************** -->
+          <div class="work__box">
+            <div class="work__text">
+              <h3>EJPT certification</h3>
+              <p>
+                Junior Penetration Testing Certificate provided by elarnsecurity.com
+              </p>
+             
+
+              <div class="work__links">
+                <a href="#" target="_blank" class="link__text">
+                  View Certificate <span>&rarr;</span>
+                </a>
+                <a href="https://elearnsecurity.com/product/ejpt-certification/" title="check more info " target="_blank">
+                  <img src="./images/els_logo.webp" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/ejpt-cert.png" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+         <!-- **********************************************EJPT********************************************************** -->
+         <!-- ****************************************NSE-1********************************************************* -->
+         <div class="work__box">
+            <div class="work__text">
+              <h3>NSE 1 - Network Security Associate</h3>
+              <p>
+                Network Security Associate Certification provided by FORTINET under NSE training institute certification program
+              </p>
+             
+
+              <div class="work__links">
+                <a href="#" target="_blank" class="link__text">
+                  View Certificate <span>&rarr;</span>
+                </a>
+                <a href="https://training.fortinet.com/course/index.php/Certification:NSE_1/" title="check more info " target="_blank">
+                  <img src="./images/1-associate-logo.png" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/NSE-1.png" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+          <!-- ****************************************NSE-1********************************************************* -->
+          </div>
+      </div>
+    </section>
+
+      <!-- ***** Work ***** -->
+
+    <section class="work" id="projects">
+      <div class="row">
+        <h2>Projects</h2>
+        <div class="work__boxes">
+
+          <!-- Each div with the work__box class is a project. -->
+     <!-- *********************************************Family GPS locator ****************************************** -->
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Family GPS Locator App</h3>
+              <p>
+                An Android application , to track live gps location of family members .
+              </p>
+             
+              <div class="work__links">
+                <a href="https://play.google.com/store/apps/details?id=com.vaishnavas.familygpslocator" target="_blank" class="link__text">
+                  Download From playstore <span>&rarr;</span>
+                </a>
+                <a href="https://github.com/veer1024/Family-GPS-Locator-App-1.0" title="View Source Code" target="_blank">
+                  <img src="./images/github.svg" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/family-gps.jpeg" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+   <!-- ********************************************Family GPS locator ******************************************** -->
+    <!-- *******************************************Facial expression ******************************************** -->
+    <div class="work__box">
+            <div class="work__text">
+              <h3>Facial Expression detection app</h3>
+              <p>
+                An Android application , which can detech location of nose,eyes,ears etc and also tells about mood and orientation of head.
+              </p>
+             
+
+              <div class="work__links">
+                <a href="https://github.com/veer1024/FacialExpressionDeteection" target="_blank" class="link__text">
+                  View App on github <span>&rarr;</span>
+                </a>
+                <a href="https://github.com/veer1024/FacialExpressionDeteection" title="check more info " target="_blank">
+                  <img src="./images/github.svg" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/facial.jpeg" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+    <!-- *******************************************Facial expression ******************************************** -->
+
+         <!-- ******************************************* Jarvis ******************************************** -->
+    <div class="work__box">
+            <div class="work__text">
+              <h3>Jarvis </h3>
+              <p>
+                A cloud Based Reccon tool , which do information gathering and reccon of a given target. easy to launch perform all attacks on the cloud hence no resources consumption is there.
+              </p>
+             
+
+              <div class="work__links">
+                <a href="https://drive.google.com/file/d/1nT7cITiK-e9SzxnPhW86oqsfNo3Su-DZ/view" target="_blank" class="link__text">
+                  View Video <span>&rarr;</span>
+                </a>
+                <a href="https://www.linkedin.com/posts/viraj-vaishnav-19b0a61aa_ethicalhacking-bughunting-activity-6820584089159012352-6GMx" title="check more info " target="_blank">
+                  <img src="./images/linkedin.svg" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/jarvis.png" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+    <!-- ******************************************* Jarvis ******************************************** -->
+
+        </div>
+      </div>
+    </section>
+     <!-- ***** Achiments and Awards ***** -->
+
+    <section class="client" id="work">
+      <div class="row">
+        <h2>Achiements and Awards</h2>
+        <p> Rewarded by following companies with bounty and Hall of fame, for reporting security issues to them.</p>
+        <div class="client__logos">
+          <!-- Add logos of the project or companies you'have worked with. -->
+      <a href=https://www.linkedin.com/posts/viraj-vaishnav-19b0a61aa_cybersecurity-infosec-informationsecurity-activity-6823229414642339840-m48p>     <img src="./images/huobi.png" class="client__logo" alt="Company 1" /> </a>
+      <a href=https://www.linkedin.com/posts/viraj-vaishnav-19b0a61aa_bugbounty-bounty-bughunting-activity-6797931259457761280-9z8x>    <img src="./images/latoken.png" class="client__logo" alt="Company 2" /> </a>
+       <a href=https://gomeztek.com/project/viraj-vaishnav/>   <img src="./images/gomeztek.png" class="client__logo" alt="Company 3" /> </a>
+      <a href=https://www.linkedin.com/posts/viraj-vaishnav-19b0a61aa_bugbounty-ethicalhacking-penetrationtesting-activity-6810997984923275264-I-o2>   <img src="./images/ib_logo.png" class="client__logo" alt="Company 4" /> </a>
+          </div>
+      </div>
+    </section>
+
+    <!-- ***** About ***** -->
+
+    <section class="about" id="about">
+      <div class="row">
+        <h2>About Me</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <!-- Replace the below paragraph with info about yourself -->
+            <p>
+              I am a Cybersecurity enthusiast and Android Developer , learning to enhance my knowledge and skills, which can be used for the organizational growth ,personal
+              growth and contribute to the organization success
+            </p>
+            <!-- Provide a link to your resume -->
+            <a href="https://drive.google.com/drive/folders/1DRzYmCUd1ezTrGa3BMGnXt2orZ8m_hMc?usp=sharing" class="btn">My Resume</a>
+          </div>
+
+          <div class="about__photo-container">
+            <!-- Add a nice photo of yourself -->
+            <img class="about__photo" src="./images/viraj.jpg" width="600" height="600" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+ 
+      <!-- ***** Contact ***** -->
+
+  <section class="contact" id="contact">
+    <div class="row">
+      <h2>Get in Touch</h2>
+      <div class="contact__info">
+        <p>
+          Are you looking for a fast-performing and user-friendly network security
+          or app security expert for your product or business? or looking for any kind of
+          consultation? or want to ask questions? or have some advice for me
+          or just want to say "Hi 👋" in any case feel free to Let me know. I
+          will do my best to respond back. 😊 The quickest way to reach out to
+          me is via an email.
+        </p>
+        <!-- Replace the email with yours -->
+        <a href="mailto:viraj1024.1024@gmail.com" class="btn">viraj1024.1024@gmail.com</a>
+      </div>
+    </div>
+  </section>
+<!-- ***** Footer ***** -->
+
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <!-- Update the links to point to your accounts -->
+      <ul class="footer__social-links">
+        <li class="footer__social-link-item">
+          <a href="https://twitter.com/VirajVaishnav16" title="Link to Twitter Profile">
+            <img src="./images/twitter.svg" class="footer__social-image" alt="Twitter">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://github.com/veer1024/" title="Link to Github Profile">
+            <img src="./images/github.svg" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://www.instagram.com/viraj_vaishnav_1024/" title="Link to Instagram Profile">
+            <img src="./images/Instagram-Logo.wine.svg" class="footer__social-image" alt="Codepen">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://www.linkedin.com/in/viraj-vaishnav-19b0a61aa/">
+            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+          </a>
+        </li>
+      </ul>
+      <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
+      <p> website template is taken from a open source project done by Nisar , he is good web developer , please also support his github profile  </p>
+      <p>
+        &copy; 2020 - Template designed & developed by <a href="https://nisar.dev" class="link">Nisar</a>.
+      </p>
+      <div class="footer__github-buttons">
+        <iframe
+          src="https://ghbtns.com/github-btn.html?user=nisarhassan12&repo=portfolio-template&type=watch&count=true"
+          frameborder="0" scrolling="0" width="170" height="20" title="Watch Portfolio Template on GitHub">
+        </iframe>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
+  </a>
+<script src="./index.js"></script>
+</body>
+</html>

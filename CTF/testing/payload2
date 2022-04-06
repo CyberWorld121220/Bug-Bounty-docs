@@ -1,0 +1,28 @@
+[ERROR] There was an error running ['/usr/bin/x86_64-linux-gnu-as', '-64', '-o', '/tmp/pwn-asm-wg3h3_uu/step2', '/tmp/pwn-asm-wg3h3_uu/step1']:
+    It had the exitcode 1.
+    It had this on stdout:
+    /tmp/pwn-asm-wg3h3_uu/step1: Assembler messages:
+    /tmp/pwn-asm-wg3h3_uu/step1:8: Error: operand type mismatch for `push'
+    
+[ERROR] An error occurred while assembling:
+       1: .section .shellcode,"awx"
+       2: .global _start
+       3: .global __start
+       4: .p2align 2
+       5: _start:
+       6: __start:
+       7: .intel_syntax noprefix
+       8: push 0x0000555555555175; ret
+    Traceback (most recent call last):
+      File "/usr/local/lib/python3.9/dist-packages/pwnlib/asm.py", line 686, in asm
+        _run(assembler + ['-o', step2, step1])
+      File "/usr/local/lib/python3.9/dist-packages/pwnlib/asm.py", line 404, in _run
+        log.error(msg, *args)
+      File "/usr/local/lib/python3.9/dist-packages/pwnlib/log.py", line 424, in error
+        raise PwnlibException(message % args)
+    pwnlib.exception.PwnlibException: There was an error running ['/usr/bin/x86_64-linux-gnu-as', '-64', '-o', '/tmp/pwn-asm-wg3h3_uu/step2', '/tmp/pwn-asm-wg3h3_uu/step1']:
+    It had the exitcode 1.
+    It had this on stdout:
+    /tmp/pwn-asm-wg3h3_uu/step1: Assembler messages:
+    /tmp/pwn-asm-wg3h3_uu/step1:8: Error: operand type mismatch for `push'
+    

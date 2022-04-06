@@ -1,0 +1,7 @@
+for cryptography,stegnography , tools guide check bios ctf page : https://wiki.bi0s.in/
+
+to convert .asm file to .out => nasm -f elf sum.asm => it will generate sum.o => gcc -m32 sum.o -o sum
+
+to grep a particular strings : grep -rnw / -e 'INCTF{' 2>/dev/null
+
+to list each file name in a directory: for entry in `ls $search_dir`; do echo `cat $entry`;done

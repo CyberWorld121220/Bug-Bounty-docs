@@ -1,0 +1,7 @@
+steghide => to hide secret text file inside of iamges(only jpeg format) , and to extract those secret files from the images
+fcrackzip => to crack password of zip file , using brute force attack or dictonary attack
+binwalk => sometimes files/images/binary code are embedded inside of other other images, text file , zip file , pdf , binary to extract those files we use binwalk.
+zsteg => use to extract data behind LSB of pixel of png/jpeg files.
+jsteg => use to hide and extract secret files behind LSB of pixel of png/jpeg files . 
+john => to crack the password of zip files 
+gdb => for dynamic analysis of executables 

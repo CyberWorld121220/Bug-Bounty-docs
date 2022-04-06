@@ -1,0 +1,45 @@
+DNS Enumeration(host,dig,nslookup):
+          // host
+       for finding the public ip of the domain where site is acutally host:
+        host www.hsploit.com
+         host -t ns hsploit.com                // will give info about name servers
+         host -t mx hsploit.com                // will give info about the mail servers site is using 
+         // nslookup
+         same job as host tool
+         nslookup hsploit.com
+         
+         nslookup interactive:
+         nslookup 
+         > set type=ns 
+         > hsploit.com
+         output: will be complete info ip,name of nameservers
+         other commands:
+         nslookup -type=txt secure-startup.com
+         nslookup -type=txt _dmarc.secure-startup.com
+         
+         for securing emails and Preventing email spoofing , companies implement SPF,DKIM and DMARC record on their mail server, we can detect all three record using nslookup
+         
+         
+         
+         Record |    Windows Command Line    |         Mac OS Terminal
+-------|----------------------------|-----------------------------------
+SPF    |nslookup  -type=txt domain  |dig txt domain
+-------|----------------------------|----------------------------------- 
+DKIM   |>nslookup                   |dig txt selector._domainkey.domain
+       |>set q=txt                  |
+       |>selector._domainkey.domain |
+-------|----------------------------|----------------------------------- 
+DMARC  |nslookup -type=txt          |dig txt _dmarc.domain
+       | _dmarc.domain              |
+-------|----------------------------|-----------------------------------
+        
+       we can perform different types of enumeration using this tools ,  example Tool_name domain_name -t TYpe-of-enum
+       here type-of-enum : ns,soa,AAAA,A,mx,txt etc as shown in dns-records image
+       CNAME records: CNAME records can be used to alias one name to another. CNAME stands for Canonical Name.
+
+A common example is when you have both example.com and www.example.com pointing to the same application and hosted by the same server. To avoid maintaining two different records, it’s common to create:
+
+An A record for example.com pointing to the server IP address
+A CNAME record for www.example.com pointing to example.com
+
+dig hsploit.com -t ns +short : will only give ns names

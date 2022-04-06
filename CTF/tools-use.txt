@@ -1,0 +1,76 @@
+binwalk =>
+binwalk file_name      # to check all files embedded in this file
+binwalk --dd=".*" file_name          # to extract all files embedded within the given file , Note: it can not detect files hidden by using LSB technology , for that use jsteg or zsteg
+
+
+steghide => (for jpg , jpeg files )
+steghide info file_name ## to get info whether the file contain and hidden data or not
+steghide extract -sf file_name ## to extract the data from the file using pharse
+
+
+Exiftool =>
+exiftool file_name ## to extract metadata of a file
+
+
+Strings =>
+strings file_name  ## to extract the ascii strings from the file
+
+Sonic Visualiser =>
+sonic-visualiser file_name
+
+Wavsteg =>
+WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from wav files.
+You can get it from  https://github.com/ragibson/Steganography#WavSteg
+Useful commands:
+python3 WavSteg.py -r -s soundfile -o outputfile : extracts data from a wav sound file and outputs the data into a new file
+
+
+zsteg =>  (for png files and dump )
+
+
+zsteg file_name             # print hidden data inside of jpeg , png files ( data hidden behind LSB (lowest significant bit of each coordinate))
+zsteg -a file               # Runs all the methods on the given file
+zsteg -E file               # Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy name.png){: .align-center}
+jsteg => 
+jsteg hide <in.jpg> <secret file name> <out.jpg>      # hidding data files in png files , LSB technology
+jsteg reveal <in.jpg> <output file name>              # extracting data from png/jpeg files 
+
+
+john => 
+
+zip2john file.zip >> hash.txt                 # getting password hash
+john hash.txt                                 # cracking hash
+
+
+
+GDB =>
+  to lauuch -> gdb -n file_name
+  setting intel falvor -> set disassembly-flavor intel
+  to list out all function -> info function
+  to disassamble main -> disass main
+  to set a breakpoint -> b*address
+  to set a breakpoint at main -> break main
+  to print current registers info -> i r
+  to run the executable -> r or run 
+  to print values -> print $al
+  to print the value of variable decalred as secret in program -> p secret
+  to print the next instructions after jump -> x/x $eip
+  to execute very next instruction -> ni
+  to print value at a adress in char -> x/s address
+  to print value at a adress in decimal -> x/d address
+  to find the address of print_flag() function in gdb -> print& print_flag
+  to check the address of all the linker and libraries loaded into ram -> vm
+  to do one time pop -> si
+  searching pattern in gef gdb : 
+                    -> grep '/sh'
+                    -> search-pattern 0x4005f6
+  calculating buffer overflow offset in gef gdb : 
+                     -> pattern create 128
+                             for speciffically n byte overwrite -> pattern create -n n 128
+                     -> pattern search 0x6161616161616167
+                     -> pattern search $rbp
+  
+  creating de Bruijn: de Bruijn sequence of order n on a size-k alphabet A is a cyclic sequence in which every possible length-n string on A occurs exactly once as a substring
+  Note: GEF must install in gdb
+  to create de Bruijn sequence pattern : pattern create 200  : in gdb , any 8 bytes from the seq occurs only one,=> put the payload
+  to get offset after which rsp is overwrite: pattern offset $rsp

