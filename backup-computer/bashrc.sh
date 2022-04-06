@@ -139,4 +139,4 @@ z=`if [[ "$x" == "$y" ]];then echo "on";else echo "off";fi`
 #echo "$z"
 if [[ "$z" == "on" ]];then echo "DNS Switcher Active for better speed. but \ if you want you can disable it by $ warp-cli disconnect";else echo "DNS Switcher Inactive, enable it by $ warp-cli connect";fi
 ########################
-
+zsh

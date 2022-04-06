@@ -17,6 +17,6 @@ user="${strarr[2]}"
 key=`echo $cipher | caesar $index`
 echo $key
 echo $user
-cd /media/boxlogin/ExtraStuff1/Notes/;echo "`date`" > date.txt;git add -A;git commit -m "`date`";echo "${user}\n${key}" | git push "https://${user}:${key}@github.com/veer1024/Notes.git" master 
+cd /media/boxlogin/ExtraStuff1/Notes/;echo "`date`" > date.txt;git add -A;git commit -m "`date`";echo "${user}\n${key}" | git push "https://${user}:${key}@github.com/veer1024/Notes-and-backup.git" master 
 echo `date` > /home/boxlogin/lastgitbackup.txt
 echo "last git backup" >> /home/boxlogin/lastgitbackup.txt

@@ -1,0 +1,60 @@
+"""JEKYLL_GITHUB_TOKEN""" ===>>> https://github.com/search?q=evil.com+%22JEKYLL_GITHUB_TOKEN%22&type=Code --->>> 1
+
+"""access_key""" ===>>> https://github.com/search?q=evil.com+%22access_key%22&type=Code --->>> 3
+
+"""access_token""" ===>>> https://github.com/search?q=evil.com+%22access_token%22&type=Code --->>> 1583
+
+"""amazonaws""" ===>>> https://github.com/search?q=evil.com+%22amazonaws%22&type=Code --->>> 338
+
+"""apiSecret""" ===>>> https://github.com/search?q=evil.com+%22apiSecret%22&type=Code --->>> 1270
+
+"""api_key""" ===>>> https://github.com/search?q=evil.com+%22api_key%22&type=Code --->>> 355
+
+"""api_secret""" ===>>> https://github.com/search?q=evil.com+%22api_secret%22&type=Code --->>> 2
+
+"""apidocs""" ===>>> https://github.com/search?q=evil.com+%22apidocs%22&type=Code --->>> 75
+
+"""apikey""" ===>>> https://github.com/search?q=evil.com+%22apikey%22&type=Code --->>> 182
+
+"""app_secret""" ===>>> https://github.com/search?q=evil.com+%22app_secret%22&type=Code --->>> 2
+
+"""appkey""" ===>>> https://github.com/search?q=evil.com+%22appkey%22&type=Code --->>> 39
+
+"""auth""" ===>>> https://github.com/search?q=evil.com+%22auth%22&type=Code --->>> 43114
+
+"""secret""" ===>>> https://github.com/search?q=evil.com+%22secret%22&type=Code --->>> 3823
+
+"""secret.password""" ===>>> https://github.com/search?q=evil.com+%22secret.password%22&type=Code --->>> 19
+
+"""secret_key""" ===>>> https://github.com/search?q=evil.com+%22secret_key%22&type=Code --->>> 367
+
+"""secret_token""" ===>>> https://github.com/search?q=evil.com+%22secret_token%22&type=Code --->>> 50
+
+"""secrets""" ===>>> https://github.com/search?q=evil.com+%22secrets%22&type=Code --->>> 602
+
+"""secure""" ===>>> https://github.com/search?q=evil.com+%22secure%22&type=Code --->>> 48799
+
+"""security_credentials""" ===>>> https://github.com/search?q=evil.com+%22security_credentials%22&type=Code --->>> 15
+
+"""send.keys""" ===>>> https://github.com/search?q=evil.com+%22send.keys%22&type=Code --->>> 10
+
+"""send_keys""" ===>>> https://github.com/search?q=evil.com+%22send_keys%22&type=Code --->>> 4
+
+"""sendkeys""" ===>>> https://github.com/search?q=evil.com+%22sendkeys%22&type=Code --->>> 6
+
+"""slack_token""" ===>>> https://github.com/search?q=evil.com+%22slack_token%22&type=Code --->>> 2
+
+"""ssh""" ===>>> https://github.com/search?q=evil.com+%22ssh%22&type=Code --->>> 1291
+
+"""ssh2_auth_password""" ===>>> https://github.com/search?q=evil.com+%22ssh2_auth_password%22&type=Code --->>> 2
+
+"""stg""" ===>>> https://github.com/search?q=evil.com+%22stg%22&type=Code --->>> 154
+
+filename:database ===>>> https://github.com/search?q=evil.com+filename%3Adatabase&type=Code --->>> 419
+
+filename:global ===>>> https://github.com/search?q=evil.com+filename%3Aglobal&type=Code --->>> 5
+
+filename:history ===>>> https://github.com/search?q=evil.com+filename%3Ahistory&type=Code --->>> 3
+
+filename:makefile ===>>> https://github.com/search?q=evil.com+filename%3Amakefile&type=Code --->>> 1
+
