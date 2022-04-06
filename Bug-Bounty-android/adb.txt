@@ -1,0 +1,19 @@
+#######  ADB Commands 
+
+    -> to download apk from phone : adb pull data/app/com.REDACTED.android.main/base.apk
+    
+    -> to see the logcat for an mobile device : adb -s device logcat
+       we can also use pidcat for that purpose 
+           pidcat -s device
+           
+    -> finding files which can be read by anyone , any user, dangerous for confidential files , even in unrooted devices
+    
+          find . -perm -o+r
+    -> listing all packages from android 
+         adb shell pm list packages               ## even in unrooted device
+
+###### Keywords grepping 
+   -> grep -ir firebase | grep http
+
+   say we want to grep next three lines after the match
+      -> grep -iR -A 3 'ADB Commands' 2>/dev/null

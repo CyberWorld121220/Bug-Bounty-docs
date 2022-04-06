@@ -1,0 +1,2 @@
+https://static.googleusercontent.com/media/www.google.com/en//about/appsecurity/play-rewards/Android_app_vulnerability_classes.pdf
+https://blog.oversecured.com/Common-mistakes-when-using-permissions-in-Android/#typos-in-permission-names

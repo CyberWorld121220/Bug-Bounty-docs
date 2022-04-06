@@ -1,0 +1,16 @@
+
+**********************gf***************************************
+
+##### to find specific pattern 
+             decompiling apk
+             -> apktool d app.apk -o name
+             then cd name/name/smali/app/name/
+             
+             then to find extract all urls from the source code :
+             
+                -> gf urls 2>/dev/null
+             say you want to extract passwords
+             
+                -> gf strings | grep -i "pass"
+                
+

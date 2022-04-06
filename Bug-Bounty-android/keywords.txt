@@ -1,0 +1,5 @@
+keywords :
+exported=true : search in manifest file
+setAllowUniversalAccessFromFileURLs(true)  : if found in any activity , means now just by url [ specifying location of file from storage or url] , we can read that file in our activity : same origin policy bypass : because we are reading files here , and if js is enabled then we can run code too
+
+android:uses-permission  : for exploitation see > https://blog.oversecured.com/Common-mistakes-when-using-permissions-in-Android/ , https://hackerone.com/reports/440749
