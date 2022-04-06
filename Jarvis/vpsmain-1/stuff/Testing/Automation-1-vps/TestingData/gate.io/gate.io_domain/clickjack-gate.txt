@@ -1,0 +1,11 @@
+https://api.gate.io
+https://apim.gate.io
+https://cf01.gate.io
+https://gate.io
+https://hk.gate.io
+https://jp.gate.io
+https://kr.gate.io
+https://new.gate.io
+https://us.gate.io
+https://ventures.gate.io
+https://www.gate.io

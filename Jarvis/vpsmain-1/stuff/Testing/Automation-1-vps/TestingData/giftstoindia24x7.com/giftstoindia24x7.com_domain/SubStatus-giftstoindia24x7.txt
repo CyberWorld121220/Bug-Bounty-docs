@@ -1,0 +1,14 @@
++---------------------------------+-----------------------------------------+-------------+-----------------------+
+|              Domain             |                   url                   | Status Code |      Server Said      |
++---------------------------------+-----------------------------------------+-------------+-----------------------+
+| [0;34;40madminworks.giftstoindia24x7.com[0m | [0;34;40mhttps://adminworks.giftstoindia24x7.com[0m |     [95m200[0m     |           [95mOK[0m          |
+|     [0;34;40mcdn.giftstoindia24x7.com[0m    |     [0;34;40mhttps://cdn.giftstoindia24x7.com[0m    |     [95m200[0m     |           [95mOK[0m          |
+|       [0;34;40mgiftstoindia24x7.com[0m      |       [0;34;40mhttps://giftstoindia24x7.com[0m      |     [95m200[0m     |           [95mOK[0m          |
+|     [0;34;40mimg.giftstoindia24x7.com[0m    |     [0;34;40mhttps://img.giftstoindia24x7.com[0m    |     [95m200[0m     |           [95mOK[0m          |
+|      [0;34;40mm.giftstoindia24x7.com[0m     |      [0;34;40mhttps://m.giftstoindia24x7.com[0m     |     [95m200[0m     |           [95mOK[0m          |
+|     [0;34;40mmvc.giftstoindia24x7.com[0m    |     [0;34;40mhttps://mvc.giftstoindia24x7.com[0m    |     [95m200[0m     |           [95mOK[0m          |
+|   [0;34;40mwebmail.giftstoindia24x7.com[0m  |   [0;34;40mhttps://webmail.giftstoindia24x7.com[0m  |     [95m200[0m     |           [95mOK[0m          |
+|     [0;34;40mwww.giftstoindia24x7.com[0m    |     [0;34;40mhttps://www.giftstoindia24x7.com[0m    |     [95m200[0m     |           [95mOK[0m          |
+|   [0;34;40mimages.giftstoindia24x7.com[0m   |   [0;34;40mhttps://images.giftstoindia24x7.com[0m   |     [91m403[0m     |       [95mForbidden[0m       |
+|    [0;34;40mimg2.giftstoindia24x7.com[0m    |    [0;34;40mhttps://img2.giftstoindia24x7.com[0m    |     [37m500[0m     | [95mInternal Server Error[0m |
++---------------------------------+-----------------------------------------+-------------+-----------------------+

@@ -1,0 +1,5 @@
+connector.callsign.com
+idp.callsign.com
+packages.callsign.com
+programs.callsign.com
+user2.callsign.com

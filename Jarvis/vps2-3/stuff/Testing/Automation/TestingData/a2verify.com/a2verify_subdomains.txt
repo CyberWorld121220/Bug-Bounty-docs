@@ -1,0 +1,2 @@
+connector.a2verify.com
+portal.a2verify.com

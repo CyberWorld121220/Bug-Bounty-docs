@@ -1,0 +1,11 @@
+api.gate.io
+apim.gate.io
+cf01.gate.io
+gate.io
+hk.gate.io
+jp.gate.io
+kr.gate.io
+new.gate.io
+us.gate.io
+ventures.gate.io
+www.gate.io

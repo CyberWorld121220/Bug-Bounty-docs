@@ -1,0 +1,6 @@
+cache.callsign.com
+dashboard.callsign.com
+portal.callsign.com
+support.callsign.com
+test.callsign.com
+verification.static.callsign.com

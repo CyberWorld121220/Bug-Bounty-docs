@@ -1,0 +1,9 @@
+boto3==1.20.26
+colorama==0.4.4
+dnspython==2.2.0
+easyimap==0.7.0
+jsbeautifier==1.14.0
+pytest==7.0.1
+requests==2.25.1
+setuptools==52.0.0
+win_unicode_console==0.5

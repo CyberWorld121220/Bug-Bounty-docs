@@ -1,0 +1,18 @@
++------------------+--------------------------+-------------+-------------+
+|      Domain      |           url            | Status Code | Server Said |
++------------------+--------------------------+-------------+-------------+
+|   [0;34;40mapi.gate.io[0m    |   [0;34;40mhttps://api.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+|   [0;34;40mapim.gate.io[0m   |   [0;34;40mhttps://apim.gate.io[0m   |     [95m200[0m     |      [95mOK[0m     |
+|   [0;34;40mcf01.gate.io[0m   |   [0;34;40mhttps://cf01.gate.io[0m   |     [95m200[0m     |      [95mOK[0m     |
+|     [0;34;40mgate.io[0m      |     [0;34;40mhttps://gate.io[0m      |     [95m200[0m     |      [95mOK[0m     |
+|    [0;34;40mhk.gate.io[0m    |    [0;34;40mhttps://hk.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+|    [0;34;40mjp.gate.io[0m    |    [0;34;40mhttps://jp.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+|    [0;34;40mkr.gate.io[0m    |    [0;34;40mhttps://kr.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+|   [0;34;40mnew.gate.io[0m    |   [0;34;40mhttps://new.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+|    [0;34;40mus.gate.io[0m    |    [0;34;40mhttps://us.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40mventures.gate.io[0m | [0;34;40mhttps://ventures.gate.io[0m |     [95m200[0m     |      [95mOK[0m     |
+|   [0;34;40mwww.gate.io[0m    |   [0;34;40mhttps://www.gate.io[0m    |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40msupport.gate.io[0m  | [0;34;40mhttps://support.gate.io[0m  |     [91m403[0m     |  [95mForbidden[0m  |
+|   [0;34;40mdata.gate.io[0m   |   [0;34;40mhttps://data.gate.io[0m   |     [91m404[0m     |  [95mNot Found[0m  |
+|    [0;34;40mws.gate.io[0m    |    [0;34;40mhttps://ws.gate.io[0m    |     [91m404[0m     |  [95mNot Found[0m  |
++------------------+--------------------------+-------------+-------------+

@@ -1,0 +1,5 @@
+a2verify.com/a2verify.com_domain/list403-a2verify.txt
+a2verify.com/a2verify.com_domain/SubStatus-a2verify.txt
+a2verify.com/a2verify.com_domain/list404-a2verify.txt
+a2verify.com/a2verify.com_domain/images/404/connector.a2verify.com.png
+a2verify.com/a2verify.com_domain/images/403/portal.a2verify.com.png

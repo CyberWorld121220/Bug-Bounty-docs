@@ -1,0 +1,2 @@
+gate.io/gate_subdomains.txt
+gate.io/gate_aws_buckets.txt

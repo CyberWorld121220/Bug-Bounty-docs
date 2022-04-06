@@ -1,0 +1,2 @@
+data.gate.io
+ws.gate.io

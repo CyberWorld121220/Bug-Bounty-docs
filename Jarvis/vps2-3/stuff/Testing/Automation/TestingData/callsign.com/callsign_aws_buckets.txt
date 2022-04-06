@@ -1,0 +1,3 @@
+packages-public.callsign.com
+verification.static.callsign.com
+www.callsign.com

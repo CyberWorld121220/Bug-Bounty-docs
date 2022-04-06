@@ -1,0 +1,13 @@
+rahul.com/rahulurls.txt
+rahul.com/rahulurls2.txt
+rahul.com/rahulurls3.txt
+gate.io/gate/gates3urls.txt
+gate.io/gate/gateauthurls.txt
+gate.io/gate/gaterceurls.txt
+gate.io/gate/gateurls.txt
+gate.io/gate/gatexssurls.txt
+gate.io/gate/gateidorurls.txt
+gate.io/gate/gatewpurls.txt
+gate.io/gate/gatessrfurls.txt
+gate.io/gate/gateredirecturls.txt
+gate.io/gate/gatesqliurls.txt

@@ -1,0 +1,112 @@
++---------------------------------------+-----------------------------------------------+-------------+---------------------+
+|                 Domain                |                      url                      | Status Code |     Server Said     |
++---------------------------------------+-----------------------------------------------+-------------+---------------------+
+|         [0;34;40mapp-a.s01.callsign.com[0m        |         [0;34;40mhttps://app-a.s01.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-a.s02.callsign.com[0m        |         [0;34;40mhttps://app-a.s02.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-a.s05.callsign.com[0m        |         [0;34;40mhttps://app-a.s05.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-a.s06.callsign.com[0m        |         [0;34;40mhttps://app-a.s06.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|    [0;34;40mapp-a.t07-pre-prod.callsign.com[0m    |    [0;34;40mhttps://app-a.t07-pre-prod.callsign.com[0m    |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-a.t10.callsign.com[0m        |         [0;34;40mhttps://app-a.t10.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mapp-a.t10-sit.callsign.com[0m      |       [0;34;40mhttps://app-a.t10-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-a.t12.callsign.com[0m        |         [0;34;40mhttps://app-a.t12.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|    [0;34;40mapp-a.t14-pre-prod.callsign.com[0m    |    [0;34;40mhttps://app-a.t14-pre-prod.callsign.com[0m    |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-a.t15.callsign.com[0m        |         [0;34;40mhttps://app-a.t15.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mapp-a.t15-sit.callsign.com[0m      |       [0;34;40mhttps://app-a.t15-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-b.s04.callsign.com[0m        |         [0;34;40mhttps://app-b.s04.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-b.t07.callsign.com[0m        |         [0;34;40mhttps://app-b.t07.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mapp-b.t07-sit.callsign.com[0m      |       [0;34;40mhttps://app-b.t07-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mapp-b.t12-sit.callsign.com[0m      |       [0;34;40mhttps://app-b.t12-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mapp-b.t14.callsign.com[0m        |         [0;34;40mhttps://app-b.t14.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mapp-b.t14-sit.callsign.com[0m      |       [0;34;40mhttps://app-b.t14-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.s01.callsign.com[0m         |          [0;34;40mhttps://app.s01.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.s02.callsign.com[0m         |          [0;34;40mhttps://app.s02.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.s04.callsign.com[0m         |          [0;34;40mhttps://app.s04.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.s05.callsign.com[0m         |          [0;34;40mhttps://app.s05.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.s06.callsign.com[0m         |          [0;34;40mhttps://app.s06.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.t07.callsign.com[0m         |          [0;34;40mhttps://app.t07.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|     [0;34;40mapp.t07-pre-prod.callsign.com[0m     |     [0;34;40mhttps://app.t07-pre-prod.callsign.com[0m     |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mapp.t07-sit.callsign.com[0m       |        [0;34;40mhttps://app.t07-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.t10.callsign.com[0m         |          [0;34;40mhttps://app.t10.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mapp.t10-sit.callsign.com[0m       |        [0;34;40mhttps://app.t10-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.t11.callsign.com[0m         |          [0;34;40mhttps://app.t11.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.t12.callsign.com[0m         |          [0;34;40mhttps://app.t12.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mapp.t12-sit.callsign.com[0m       |        [0;34;40mhttps://app.t12-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.t14.callsign.com[0m         |          [0;34;40mhttps://app.t14.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|     [0;34;40mapp.t14-pre-prod.callsign.com[0m     |     [0;34;40mhttps://app.t14-pre-prod.callsign.com[0m     |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mapp.t14-sit.callsign.com[0m       |        [0;34;40mhttps://app.t14-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mapp.t15.callsign.com[0m         |          [0;34;40mhttps://app.t15.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mapp.t15-sit.callsign.com[0m       |        [0;34;40mhttps://app.t15-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.s01.callsign.com[0m        |         [0;34;40mhttps://b2b-a.s01.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.s02.callsign.com[0m        |         [0;34;40mhttps://b2b-a.s02.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.s05.callsign.com[0m        |         [0;34;40mhttps://b2b-a.s05.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.s06.callsign.com[0m        |         [0;34;40mhttps://b2b-a.s06.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.t10.callsign.com[0m        |         [0;34;40mhttps://b2b-a.t10.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mb2b-a.t10-sit.callsign.com[0m      |       [0;34;40mhttps://b2b-a.t10-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.t12.callsign.com[0m        |         [0;34;40mhttps://b2b-a.t12.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|    [0;34;40mb2b-a.t14-pre-prod.callsign.com[0m    |    [0;34;40mhttps://b2b-a.t14-pre-prod.callsign.com[0m    |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-a.t15.callsign.com[0m        |         [0;34;40mhttps://b2b-a.t15.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mb2b-a.t15-sit.callsign.com[0m      |       [0;34;40mhttps://b2b-a.t15-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-b.s04.callsign.com[0m        |         [0;34;40mhttps://b2b-b.s04.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mb2b-b.t12-sit.callsign.com[0m      |       [0;34;40mhttps://b2b-b.t12-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|         [0;34;40mb2b-b.t14.callsign.com[0m        |         [0;34;40mhttps://b2b-b.t14.callsign.com[0m        |     [95m200[0m     |          [95mOK[0m         |
+|       [0;34;40mb2b-b.t14-sit.callsign.com[0m      |       [0;34;40mhttps://b2b-b.t14-sit.callsign.com[0m      |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.s01.callsign.com[0m         |          [0;34;40mhttps://b2b.s01.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.s02.callsign.com[0m         |          [0;34;40mhttps://b2b.s02.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.s04.callsign.com[0m         |          [0;34;40mhttps://b2b.s04.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.s05.callsign.com[0m         |          [0;34;40mhttps://b2b.s05.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.s06.callsign.com[0m         |          [0;34;40mhttps://b2b.s06.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.t10.callsign.com[0m         |          [0;34;40mhttps://b2b.t10.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mb2b.t10-sit.callsign.com[0m       |        [0;34;40mhttps://b2b.t10-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.t11.callsign.com[0m         |          [0;34;40mhttps://b2b.t11.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.t12.callsign.com[0m         |          [0;34;40mhttps://b2b.t12.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mb2b.t12-sit.callsign.com[0m       |        [0;34;40mhttps://b2b.t12-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.t14.callsign.com[0m         |          [0;34;40mhttps://b2b.t14.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|     [0;34;40mb2b.t14-pre-prod.callsign.com[0m     |     [0;34;40mhttps://b2b.t14-pre-prod.callsign.com[0m     |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mb2b.t14-sit.callsign.com[0m       |        [0;34;40mhttps://b2b.t14-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mb2b.t15.callsign.com[0m         |          [0;34;40mhttps://b2b.t15.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mb2b.t15-sit.callsign.com[0m       |        [0;34;40mhttps://b2b.t15-sit.callsign.com[0m       |     [95m200[0m     |          [95mOK[0m         |
+|           [0;34;40mblog.callsign.com[0m           |           [0;34;40mhttps://blog.callsign.com[0m           |     [95m200[0m     |          [95mOK[0m         |
+|              [0;34;40mcallsign.com[0m             |              [0;34;40mhttps://callsign.com[0m             |     [95m200[0m     |          [95mOK[0m         |
+|        [0;34;40mdevelopers.callsign.com[0m        |        [0;34;40mhttps://developers.callsign.com[0m        |     [95m200[0m     |           [95m[0m          |
+|           [0;34;40mdocs.callsign.com[0m           |           [0;34;40mhttps://docs.callsign.com[0m           |     [95m200[0m     |           [95m[0m          |
+|            [0;34;40mif.callsign.com[0m            |            [0;34;40mhttps://if.callsign.com[0m            |     [95m200[0m     |          [95mOK[0m         |
+|            [0;34;40mok.callsign.com[0m            |            [0;34;40mhttps://ok.callsign.com[0m            |     [95m200[0m     |          [95mOK[0m         |
+|      [0;34;40mpackages-public.callsign.com[0m     |      [0;34;40mhttps://packages-public.callsign.com[0m     |     [95m200[0m     |          [95mOK[0m         |
+|          [0;34;40mpathway.callsign.com[0m         |          [0;34;40mhttps://pathway.callsign.com[0m         |     [95m200[0m     |          [95mOK[0m         |
+|            [0;34;40mwww.callsign.com[0m           |            [0;34;40mhttps://www.callsign.com[0m           |     [95m200[0m     |          [95mOK[0m         |
+|           [0;34;40msales.callsign.com[0m          |           [0;34;40mhttps://sales.callsign.com[0m          |     [95m204[0m     |      [95mNo Content[0m     |
+|           [0;34;40mcache.callsign.com[0m          |           [0;34;40mhttps://cache.callsign.com[0m          |     [91m400[0m     |     [95mBad Request[0m     |
+|         [0;34;40mdashboard.callsign.com[0m        |         [0;34;40mhttps://dashboard.callsign.com[0m        |     [91m401[0m     |           [95m[0m          |
+|          [0;34;40mportal.callsign.com[0m          |          [0;34;40mhttps://portal.callsign.com[0m          |     [91m401[0m     |           [95m[0m          |
+|          [0;34;40msupport.callsign.com[0m         |          [0;34;40mhttps://support.callsign.com[0m         |     [91m403[0m     |      [95mForbidden[0m      |
+|           [0;34;40mtest.callsign.com[0m           |           [0;34;40mhttps://test.callsign.com[0m           |     [91m403[0m     |      [95mForbidden[0m      |
+|    [0;34;40mverification.static.callsign.com[0m   |    [0;34;40mhttps://verification.static.callsign.com[0m   |     [91m403[0m     |      [95mForbidden[0m      |
+|         [0;34;40mconnector.callsign.com[0m        |         [0;34;40mhttps://connector.callsign.com[0m        |     [91m404[0m     |           [95m[0m          |
+|            [0;34;40midp.callsign.com[0m           |            [0;34;40mhttps://idp.callsign.com[0m           |     [91m404[0m     |           [95m[0m          |
+|         [0;34;40mpackages.callsign.com[0m         |         [0;34;40mhttps://packages.callsign.com[0m         |     [91m404[0m     |      [95mNot Found[0m      |
+|         [0;34;40mprograms.callsign.com[0m         |         [0;34;40mhttps://programs.callsign.com[0m         |     [91m404[0m     |      [95mNot Found[0m      |
+|           [0;34;40muser2.callsign.com[0m          |           [0;34;40mhttps://user2.callsign.com[0m          |     [91m404[0m     |           [95m[0m          |
+|       [0;34;40mapp-b.t15-sit.callsign.com[0m      |       [0;34;40mhttps://app-b.t15-sit.callsign.com[0m      |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.s01.callsign.com[0m     |      [0;34;40mhttps://app-offline.s01.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.s02.callsign.com[0m     |      [0;34;40mhttps://app-offline.s02.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.s04.callsign.com[0m     |      [0;34;40mhttps://app-offline.s04.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.s05.callsign.com[0m     |      [0;34;40mhttps://app-offline.s05.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.s06.callsign.com[0m     |      [0;34;40mhttps://app-offline.s06.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.t07.callsign.com[0m     |      [0;34;40mhttps://app-offline.t07.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+| [0;34;40mapp-offline.t07-pre-prod.callsign.com[0m | [0;34;40mhttps://app-offline.t07-pre-prod.callsign.com[0m |     [37m502[0m     |     [95mBad Gateway[0m     |
+|    [0;34;40mapp-offline.t07-sit.callsign.com[0m   |    [0;34;40mhttps://app-offline.t07-sit.callsign.com[0m   |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.t10.callsign.com[0m     |      [0;34;40mhttps://app-offline.t10.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|    [0;34;40mapp-offline.t10-sit.callsign.com[0m   |    [0;34;40mhttps://app-offline.t10-sit.callsign.com[0m   |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.t12.callsign.com[0m     |      [0;34;40mhttps://app-offline.t12.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+|    [0;34;40mapp-offline.t12-sit.callsign.com[0m   |    [0;34;40mhttps://app-offline.t12-sit.callsign.com[0m   |     [37m502[0m     |     [95mBad Gateway[0m     |
+|      [0;34;40mapp-offline.t14.callsign.com[0m     |      [0;34;40mhttps://app-offline.t14.callsign.com[0m     |     [37m502[0m     |     [95mBad Gateway[0m     |
+| [0;34;40mapp-offline.t14-pre-prod.callsign.com[0m | [0;34;40mhttps://app-offline.t14-pre-prod.callsign.com[0m |     [37m502[0m     |     [95mBad Gateway[0m     |
+|    [0;34;40mapp-offline.t14-sit.callsign.com[0m   |    [0;34;40mhttps://app-offline.t14-sit.callsign.com[0m   |     [37m502[0m     |     [95mBad Gateway[0m     |
+|    [0;34;40mapp-offline.t15-sit.callsign.com[0m   |    [0;34;40mhttps://app-offline.t15-sit.callsign.com[0m   |     [37m502[0m     |     [95mBad Gateway[0m     |
+|         [0;34;40mapp-a.s03.callsign.com[0m        |         [0;34;40mhttps://app-a.s03.callsign.com[0m        |     [37m503[0m     | [95mService Unavailable[0m |
+|         [0;34;40mapp-b.s07.callsign.com[0m        |         [0;34;40mhttps://app-b.s07.callsign.com[0m        |     [37m503[0m     | [95mService Unavailable[0m |
+|      [0;34;40mapp-offline.s03.callsign.com[0m     |      [0;34;40mhttps://app-offline.s03.callsign.com[0m     |     [37m503[0m     | [95mService Unavailable[0m |
+|      [0;34;40mapp-offline.s07.callsign.com[0m     |      [0;34;40mhttps://app-offline.s07.callsign.com[0m     |     [37m503[0m     | [95mService Unavailable[0m |
+|          [0;34;40mapp.s03.callsign.com[0m         |          [0;34;40mhttps://app.s03.callsign.com[0m         |     [37m503[0m     | [95mService Unavailable[0m |
+|          [0;34;40mapp.s07.callsign.com[0m         |          [0;34;40mhttps://app.s07.callsign.com[0m         |     [37m503[0m     | [95mService Unavailable[0m |
++---------------------------------------+-----------------------------------------------+-------------+---------------------+

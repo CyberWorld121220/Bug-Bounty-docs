@@ -1,0 +1,5 @@
+app-a.s02.callsign.com
+app-offline.s02.callsign.com
+app.s02.callsign.com
+b2b-a.s02.callsign.com
+b2b.s02.callsign.com

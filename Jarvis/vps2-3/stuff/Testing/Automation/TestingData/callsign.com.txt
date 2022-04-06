@@ -1,0 +1,2 @@
+callsign.com/callsign_subdomains.txt
+callsign.com/callsign_aws_buckets.txt
