@@ -1,0 +1,13 @@
+http://vod.infomaniak.com/iframe.php?url=valtv_vod//folder-36051/mp4-924/meteo-2018-02-12.mp4&preloadImage=valtv_vod//folder-36051/mp4-924/meteo-2018-02-12.jpg&player=3732&vod=2092
+http://vod.infomaniak.com/iframe.php?url=valtv_vod/folder-36051/mp4-924/meteo-2018-05-14.mp4&preloadImage=valtv_vod/folder-36051/mp4-924/meteo-2018-05-14.jpg&player=3732&vod=2092
+http://vod.infomaniak.com/iframe.php?url=valtv_vod//folder-41025/mp4-922/raconte-moi-le-risoud-2018-01-benki-piyako1-vod-hd.mp4&preloadImage=valtv_vod//folder-41025/mp4-922/raconte-moi-le-risoud-2018-01-benki-piyako1-vod-hd.jpg&player=3732&vod=2092
+http://vod.infomaniak.com/iframe.php?url=valtv_vod//folder-41025/mp4-924/raconte-moi-le-risoud-2017-10-jean-luc-debonneville1-vod-hd.mp4&preloadImage=valtv_vod//folder-41025/mp4-924/raconte-moi-le-risoud-2017-10-jean-luc-debonneville1-vod-hd.jpg&player=3732&vod=2092
+http://vod.infomaniak.com/iframe.php?url=valtv_vod/folder-41025/mp4-924/raconte-moi-le-risoud-2018-05-ernst-zurcher-vod-hd.mp4&preloadImage=valtv_vod/folder-41025/mp4-924/raconte-moi-le-risoud-2018-05-ernst-zurcher-vod-hd.jpg&player=3732&vod=2092
+http://vod.infomaniak.com/iframe.php?url=videooogmbh_2_vod/vcom-4302/mp4-226/financeskills_intro.mp4&player=1692&vod=467&mobile=videooogmbh_2_vod/vcom-4302/mp4-323/financeskills_intro.mp4&preloadImage=videooogmbh_2_vod/vcom-4302/mp4-226/financeskills_intro.jpg
+http://vod.infomaniak.com/iframe.php?url=yanndorset_vod//folder-38236/mp4-322/y-voile1.mp4&preloadImage=yanndorset_vod//folder-38236/mp4-322/y-voile1.jpg&player=5228&vod=2953&autostart=1&loop=1&strechheight=0
+http://vod.infomaniak.com/iframe.php?url=yanndorset_vod/folder-38236/mp4-322/y-voile1.mp4&preloadImage=yanndorset_vod/folder-38236/mp4-322/y-voile1.jpg&player=5228&vod=2953&autostart=1&loop=1&strechheight=0
+http://www.infomaniak.com/support/faq/faq_home.php?faq=1802
+http://www.infomaniak.com/support/faq/faq_home.php?faq=1803
+http://www.infomaniak.com/support
+http://www.infomaiak.com/hello.txt
+http://abc/hello

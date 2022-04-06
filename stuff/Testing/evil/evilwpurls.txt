@@ -1,0 +1,2 @@
+http://www.evil.com:80/wp-admin
+http://www.evil.com:80/wp-login

@@ -1,0 +1,6 @@
+http://evil.com:80/?url=
+http://evil.com/?data=
+http://evil.com/log?data=..
+http://evil.com/?yourdata=....%22;
+https://evil.com/login?redirect_after_login=https://twitter.com:21/%E5%98%8A%E5%98%8Dcontent-type:text/html%E5%98%8A%E5%98%8Dlocation:%E5%98%8A%E5%98%8D%E5%98%8A%E5%98%8D%E5%98%BCsvg/onload=alert(innerHTML)%E5%98%BE
+http://www.evil.com/_vti_bin/fpcount.exe/?Page=newfront.htm|Image=2

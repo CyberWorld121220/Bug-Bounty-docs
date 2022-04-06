@@ -1,0 +1,12 @@
++------------------------+--------------------------------+-------------+-------------+
+|         Domain         |              url               | Status Code | Server Said |
++------------------------+--------------------------------+-------------+-------------+
+|     [0;34;40mwalld.evil.com[0m     |     [0;34;40mhttps://walld.evil.com[0m     |     [95m200[0m     |      [95mOK[0m     |
+|      [0;34;40mso.evil.com[0m       |      [0;34;40mhttps://so.evil.com[0m       |     [95m200[0m     |      [95mOK[0m     |
+|       [0;34;40ma.evil.com[0m       |       [0;34;40mhttps://a.evil.com[0m       |     [95m200[0m     |      [95mOK[0m     |
+|    [0;34;40mreally.evil.com[0m     |    [0;34;40mhttps://really.evil.com[0m     |     [95m200[0m     |      [95mOK[0m     |
+|     [0;34;40mframe.evil.com[0m     |     [0;34;40mhttps://frame.evil.com[0m     |     [95m200[0m     |      [95mOK[0m     |
+|    [0;34;40mmovies.evil.com[0m     |    [0;34;40mhttps://movies.evil.com[0m     |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40msmartbusiness.evil.com[0m | [0;34;40mhttps://smartbusiness.evil.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|   [0;34;40mresident.evil.com[0m    |   [0;34;40mhttps://resident.evil.com[0m    |     [95m200[0m     |      [95mOK[0m     |
++------------------------+--------------------------------+-------------+-------------+

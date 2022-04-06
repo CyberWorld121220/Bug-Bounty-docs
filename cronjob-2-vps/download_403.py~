@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+from boto3.session import Session
+import boto3
+import os
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-d","--download",help="to download...")
+args = parser.parse_args()
+target = args.download
+## creating session
+access_key = 'AKIA6H52NPDKUVSQSCWJ'
+secret_key = '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'
+bucket = 'vps-s3-tvaeneir'
+session = Session(aws_access_key_id=access_key,
+              aws_secret_access_key=secret_key)
+s3 = session.resource('s3')
+your_bucket = s3.Bucket(bucket)
+target_url = target+"/"+target+"_domain/list403_"+target.split(".")[-2]+".txt"
+save_as = "list403_"+target.split(".")[-2]+".txt"
+print(save_as)
+#save_as = target + "_tdir.txt"
+your_bucket.download_file(target_url,save_as)

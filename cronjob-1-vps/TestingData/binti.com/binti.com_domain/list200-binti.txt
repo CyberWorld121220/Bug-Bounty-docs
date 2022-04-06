@@ -1,0 +1,3 @@
+engineering.binti.com
+metabase-development.binti.com
+status.binti.com

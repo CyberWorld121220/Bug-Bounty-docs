@@ -1,0 +1,8 @@
+#!/bin/bash
+while read line; do 
+var="text,text,text,text"
+res="${var//[^,]}"
+echo "$res"
+echo "${#res}"; 
+done < $1
+

@@ -1,0 +1,7 @@
+gau -subs $1 | grep '.js$' >> $1_vul1.txt
+waybackurls $1 | grep '.js$' >> $1_vul2.txt
+subfinder -d $1 | httpx | subjs >> $1_vul3.txt
+cat $1_vul1.txt $1_vul2.txt $1_vul3.txt | sort -u >> $1_js.txt
+rm -rf $1_vul1.txt
+rm -rf $1_vul2.txt
+rm -rf $1_vul3.txt

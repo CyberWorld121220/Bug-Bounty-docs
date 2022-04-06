@@ -1,0 +1,3 @@
+evil.com/SubStatus-evil.txt
+evil.com/list200-evil.txt
+evil.com/header_reflection_evil.txt

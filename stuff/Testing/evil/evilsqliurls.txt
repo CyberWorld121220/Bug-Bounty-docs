@@ -1,0 +1,8 @@
+http://evil.com:80/get0day?uname=2.6.31-16-generic+%2352-Ubuntu+SMP+Thu+Dec+3+22%3A07%3A16+UTC+2009+x86_64+GNU%2FLinux
+http://evil.com/?search=xss
+http://evil.com/?search=xss&q
+http://evil.com/sniffer.php%22/id=%22login&quot
+http://evil.com/track.php?id=xxx
+http://evil.com/?user=
+https://evil.com/rf.php?id=1&id=&&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=&id=xss
+http://www.evil.com/ebayhttp:/www.sonystyle.com/is-bin/INTERSHOP.enfinity/eCS/Store/en/-/USD/SY_DisplayProductInformation-Start?ProductSKU=NWHD1&Dept=pa&CategoryName=pa_DigitalMusicPlayers_Network&CP=newsonycom_senmod_shop_phopro

@@ -1,0 +1,11 @@
+backoffice.binary.com
+collector01.binary.com
+xml.binary.com
+careers.binary.com
+cashier.binary.com
+charts.binary.com
+developers.binary.com
+info.binary.com
+js.binary.com
+media.binary.com
+tech.binary.com

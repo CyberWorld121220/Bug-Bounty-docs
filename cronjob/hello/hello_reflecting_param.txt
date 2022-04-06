@@ -1,0 +1,3 @@
+http://vod.infomaniak.com/iframe.php?url=viraj&preloadImage=viraj&player=viraj&vod=viraj
+http://vod.infomaniak.com/iframe.php?url=viraj&player=viraj&vod=viraj&mobile=viraj&preloadImage=viraj
+http://vod.infomaniak.com/iframe.php?url=viraj&preloadImage=viraj&player=viraj&vod=viraj&autostart=viraj&loop=viraj&strechheight=viraj

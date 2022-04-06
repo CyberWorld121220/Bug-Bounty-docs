@@ -1,0 +1,50 @@
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|                  Domain                 |                       url                       | Status Code | Server Said |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|    [0;34;40madmin-instanchange.crypterium.com[0m    |    [0;34;40mhttps://admin-instanchange.crypterium.com[0m    |     [95m200[0m     |      [95mOK[0m     |
+|  [0;34;40madmin-instanchange-dev.crypterium.com[0m  |  [0;34;40mhttps://admin-instanchange-dev.crypterium.com[0m  |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40madmin-instanchange-stage.crypterium.com[0m | [0;34;40mhttps://admin-instanchange-stage.crypterium.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|         [0;34;40madmin-ph.crypterium.com[0m         |         [0;34;40mhttps://admin-ph.crypterium.com[0m         |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapp.crypterium.com[0m           |            [0;34;40mhttps://app.crypterium.com[0m           |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapi.crypterium.com[0m           |            [0;34;40mhttps://api.crypterium.com[0m           |     [37m502[0m     | [95mBad Gateway[0m |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|                  Domain                 |                       url                       | Status Code | Server Said |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|    [0;34;40madmin-instanchange.crypterium.com[0m    |    [0;34;40mhttps://admin-instanchange.crypterium.com[0m    |     [95m200[0m     |      [95mOK[0m     |
+|  [0;34;40madmin-instanchange-dev.crypterium.com[0m  |  [0;34;40mhttps://admin-instanchange-dev.crypterium.com[0m  |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40madmin-instanchange-stage.crypterium.com[0m | [0;34;40mhttps://admin-instanchange-stage.crypterium.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|         [0;34;40madmin-ph.crypterium.com[0m         |         [0;34;40mhttps://admin-ph.crypterium.com[0m         |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapp.crypterium.com[0m           |            [0;34;40mhttps://app.crypterium.com[0m           |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapi.crypterium.com[0m           |            [0;34;40mhttps://api.crypterium.com[0m           |     [37m502[0m     | [95mBad Gateway[0m |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|                  Domain                 |                       url                       | Status Code | Server Said |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|    [0;34;40madmin-instanchange.crypterium.com[0m    |    [0;34;40mhttps://admin-instanchange.crypterium.com[0m    |     [95m200[0m     |      [95mOK[0m     |
+|  [0;34;40madmin-instanchange-dev.crypterium.com[0m  |  [0;34;40mhttps://admin-instanchange-dev.crypterium.com[0m  |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40madmin-instanchange-stage.crypterium.com[0m | [0;34;40mhttps://admin-instanchange-stage.crypterium.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|         [0;34;40madmin-ph.crypterium.com[0m         |         [0;34;40mhttps://admin-ph.crypterium.com[0m         |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapp.crypterium.com[0m           |            [0;34;40mhttps://app.crypterium.com[0m           |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapi.crypterium.com[0m           |            [0;34;40mhttps://api.crypterium.com[0m           |     [37m502[0m     | [95mBad Gateway[0m |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|                  Domain                 |                       url                       | Status Code | Server Said |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|    [0;34;40madmin-instanchange.crypterium.com[0m    |    [0;34;40mhttps://admin-instanchange.crypterium.com[0m    |     [95m200[0m     |      [95mOK[0m     |
+|  [0;34;40madmin-instanchange-dev.crypterium.com[0m  |  [0;34;40mhttps://admin-instanchange-dev.crypterium.com[0m  |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40madmin-instanchange-stage.crypterium.com[0m | [0;34;40mhttps://admin-instanchange-stage.crypterium.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|         [0;34;40madmin-ph.crypterium.com[0m         |         [0;34;40mhttps://admin-ph.crypterium.com[0m         |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapp.crypterium.com[0m           |            [0;34;40mhttps://app.crypterium.com[0m           |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapi.crypterium.com[0m           |            [0;34;40mhttps://api.crypterium.com[0m           |     [37m502[0m     | [95mBad Gateway[0m |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|                  Domain                 |                       url                       | Status Code | Server Said |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+
+|    [0;34;40madmin-instanchange.crypterium.com[0m    |    [0;34;40mhttps://admin-instanchange.crypterium.com[0m    |     [95m200[0m     |      [95mOK[0m     |
+|  [0;34;40madmin-instanchange-dev.crypterium.com[0m  |  [0;34;40mhttps://admin-instanchange-dev.crypterium.com[0m  |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40madmin-instanchange-stage.crypterium.com[0m | [0;34;40mhttps://admin-instanchange-stage.crypterium.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|         [0;34;40madmin-ph.crypterium.com[0m         |         [0;34;40mhttps://admin-ph.crypterium.com[0m         |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapp.crypterium.com[0m           |            [0;34;40mhttps://app.crypterium.com[0m           |     [95m200[0m     |      [95mOK[0m     |
+|            [0;34;40mapi.crypterium.com[0m           |            [0;34;40mhttps://api.crypterium.com[0m           |     [37m502[0m     | [95mBad Gateway[0m |
++-----------------------------------------+-------------------------------------------------+-------------+-------------+

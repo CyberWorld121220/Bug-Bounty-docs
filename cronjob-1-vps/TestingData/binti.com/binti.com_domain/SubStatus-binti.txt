@@ -1,0 +1,15 @@
++--------------------------------+----------------------------------------+-------------+-------------+
+|             Domain             |                  url                   | Status Code | Server Said |
++--------------------------------+----------------------------------------+-------------+-------------+
+|     [0;34;40mengineering.binti.com[0m      |     [0;34;40mhttps://engineering.binti.com[0m      |     [95m200[0m     |      [95mOK[0m     |
+| [0;34;40mmetabase-development.binti.com[0m | [0;34;40mhttps://metabase-development.binti.com[0m |     [95m200[0m     |      [95mOK[0m     |
+|        [0;34;40mstatus.binti.com[0m        |        [0;34;40mhttps://status.binti.com[0m        |     [95m200[0m     |      [95mOK[0m     |
+|      [0;34;40manalytics.binti.com[0m       |      [0;34;40mhttps://analytics.binti.com[0m       |     [91m403[0m     |  [95mForbidden[0m  |
+|           [0;34;40mbinti.com[0m            |           [0;34;40mhttps://binti.com[0m            |     [91m403[0m     |  [95mForbidden[0m  |
+|        [0;34;40mfamily.binti.com[0m        |        [0;34;40mhttps://family.binti.com[0m        |     [91m403[0m     |  [95mForbidden[0m  |
+|         [0;34;40mfigs.binti.com[0m         |         [0;34;40mhttps://figs.binti.com[0m         |     [91m403[0m     |  [95mForbidden[0m  |
+|       [0;34;40mmetabase.binti.com[0m       |       [0;34;40mhttps://metabase.binti.com[0m       |     [91m403[0m     |  [95mForbidden[0m  |
+|         [0;34;40mwww.binti.com[0m          |         [0;34;40mhttps://www.binti.com[0m          |     [91m403[0m     |  [95mForbidden[0m  |
+|         [0;34;40myams.binti.com[0m         |         [0;34;40mhttps://yams.binti.com[0m         |     [91m403[0m     |  [95mForbidden[0m  |
+|        [0;34;40mplums.binti.com[0m         |        [0;34;40mhttps://plums.binti.com[0m         |     [91m404[0m     |  [95mNot Found[0m  |
++--------------------------------+----------------------------------------+-------------+-------------+
