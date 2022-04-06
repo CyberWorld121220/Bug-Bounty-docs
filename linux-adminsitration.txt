@@ -1,0 +1,25 @@
+Linux administration:
+Groups :::>>>
+    to list all groups whose current user is member
+         groups user_name
+         groups  => list for current user
+         id => will also list all groups
+    adding a user A to group G:
+         usermod -aG G A
+    Removing a user A from group G:
+         gpasswd -d A G
+
+Users :::>>>
+    Creating a new user in linux
+           sudo useradd username
+    Setting passwd for newly added user
+           sudo passwd username
+
+
+Current problem:
+
+user ALL=(ALL) ALL
+
+Solution
+
+user ALL = ALL, !/bin/su
