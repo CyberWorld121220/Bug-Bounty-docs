@@ -14,6 +14,8 @@ Users :::>>>
            sudo useradd -m username # if we don't specify -m , then home directory will not be created for user
     Creating a new user and setting its home directory at a particular location: 
            sudo useradd -m -d /opt/username username
+    Creating a new user and setting its UID 
+           sudo useradd -u 1500 username
     Setting passwd for newly added user
            sudo passwd username
 
