@@ -22,6 +22,9 @@ FILES
    %admin ALL=(ALL) ALL – the % sign specifies a group. Anyone in the admin group has the same privileges as of root user
    %sudo   ALL=(ALL:ALL) ALL – all users in the sudo group have the privileges to run any command
    boxlogin ALL = ALL, !/bin/su  – user "bologin" can run all command with sudo , but not the su command to get root shell
+   
+   Note: It is recommended to use visudo to edit the sudoers file. Visudo makes sure that sudoers is edited by one user at a time and provides necessary syntax checks.
+   
  /etc/group =>
    it contains information regarding group and its users , each line is written in below format 
    
