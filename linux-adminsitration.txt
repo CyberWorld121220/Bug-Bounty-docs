@@ -20,6 +20,8 @@ Users :::>>>
            sudo useradd -s /usr/bin/zsh username
     Creating a new user with specific comment attach to the user
            sudo useradd -c "Test User Account" username
+    Creating system user : 
+           sudo useradd -r username
     Setting passwd for newly added user
            sudo passwd username
 
