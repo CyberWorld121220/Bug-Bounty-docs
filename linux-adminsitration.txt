@@ -16,6 +16,8 @@ Users :::>>>
            sudo useradd -m -d /opt/username username
     Creating a new user and setting its UID 
            sudo useradd -u 1500 username
+    Creating a new user with specific default shell
+           sudo useradd -s /usr/bin/zsh username
     Setting passwd for newly added user
            sudo passwd username
 
