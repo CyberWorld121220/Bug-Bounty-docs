@@ -21,7 +21,7 @@ FILES
    root ALL=(ALL:ALL) ALL – this line means that the root user has unlimited privileges and can run any command on the system
    %admin ALL=(ALL) ALL – the % sign specifies a group. Anyone in the admin group has the same privileges as of root user
    %sudo   ALL=(ALL:ALL) ALL – all users in the sudo group have the privileges to run any command
-   
+   boxlogin ALL = ALL, !/bin/su  – user "bologin" can run all command with sudo , but not the su command to get root shell
  /etc/group =>
    it contains information regarding group and its users , each line is written in below format 
    
