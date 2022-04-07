@@ -18,6 +18,8 @@ Users :::>>>
            sudo useradd -u 1500 username
     Creating a new user with specific default shell
            sudo useradd -s /usr/bin/zsh username
+    Creating a new user with specific comment attach to the user
+           sudo useradd -c "Test User Account" username
     Setting passwd for newly added user
            sudo passwd username
 
