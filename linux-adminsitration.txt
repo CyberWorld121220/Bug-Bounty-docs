@@ -22,7 +22,9 @@ FILES
    %admin ALL=(ALL) ALL – the % sign specifies a group. Anyone in the admin group has the same privileges as of root user
    %sudo   ALL=(ALL:ALL) ALL – all users in the sudo group have the privileges to run any command
  /etc/group =>
+   it contains information regarding group and its users , each line is written in below format 
    
+       GROUP_NAME:x(WHICH_REPRESENT_PASSWORD_WHICH_IS_NULL):GROUP_ID:LIST_OF_ALL_GROUP_USERS_SEPARATED_BY_COMMA
    
 
 Current problem:
