@@ -11,7 +11,7 @@ Groups :::>>>
 
 Users :::>>>
     Creating a new user in linux
-           sudo useradd username
+           sudo useradd -m username # if we don't specify -m , then home directory will not be created for user
     Setting passwd for newly added user
            sudo passwd username
 
